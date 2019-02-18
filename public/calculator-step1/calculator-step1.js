@@ -23,7 +23,6 @@ function equal(){
         alert("0으로 나눌 수 없습니다.");
         return;
     }
-    
     document.getElementById("resultBar").value = result;
 }
 
@@ -34,26 +33,25 @@ function errors(){
 
 function checkIsException(input){
     var splitedBySym = input.split(/[+*/-]/);
-//    var index = splitedBySym.length -1;
     if(splitedBySym[0] == "" || splitedBySym[splitedBySym.length-1] == "") {return true;}
     if(splitedBySym.length >= 3) {return true;}
     if(input.match(/[a-z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i) != null) {return true;}
 }
 
-function add(a, b){
-    return parseInt(a)+parseInt(b);
+function add(leftNum, rightNum){
+    return parseInt(leftNum)+parseInt(rightNum);
 }
 
-function multiply(a, b){
-    return parseInt(a)*parseInt(b);
+function multiply(leftNum, rightNum){
+    return parseInt(leftNum)*parseInt(rightNum);
 }
 
-function divide(a, b){
-    return parseInt(a)/parseInt(b);
+function divide(leftNum, b){
+    return parseInt(leftNum)/parseInt(rightNum);
 }
 
-function subtract(a, b){
-    return parseInt(a)-parseInt(b);
+function subtract(leftNum, b){
+    return parseInt(leftNum)-parseInt(rightNum);
 }
 
 function checkRegex(input){
@@ -68,7 +66,6 @@ function checkRegex(input){
         'numB' : numB,
         'calSym' : calSym
     }
-    
     return resultObj;
 }
 
