@@ -13,6 +13,7 @@ function equal(){
     
     if(checkIsException(input)){
         errors();
+        return;
     }
     
     var resultObj = checkRegex(input);
@@ -32,29 +33,11 @@ function errors(){
 }
 
 function checkIsException(input){
-    
-}
-
-function checkNumberOfDigit(input){
-    var pattern = /(\d+)/g;
-    console.log("number of digit : " + input.match(pattern).length);
-    return (input.match(pattern).length >= 3);
-}
-
-function checkNumberOfCalSym(input){
-    var pattern = /[+*/-]/g;
-    console.log("number of sym : " + input.match(pattern).length);
-    return (input.match(pattern).length >= 2);
-}
-
-function checkLanguage(input){
-    var pattern = /[a-z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i;
-    return (input.match(pattern) != null);
-}
-
-function checkLocationOfCalSym(input){
-    var pattern = /^[+*/-]/;
-    return (input.match(pattern) != null);
+    var splitedBySym = input.split(/[+*/-]/);
+//    var index = splitedBySym.length -1;
+    if(splitedBySym[0] == "" || splitedBySym[splitedBySym.length-1] == "") {return true;}
+    if(splitedBySym.length >= 3) {return true;}
+    if(input.match(/[a-z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i) != null) {return true;}
 }
 
 function add(a, b){
