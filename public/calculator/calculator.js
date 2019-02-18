@@ -35,6 +35,18 @@ function enterToCalculate() {
     document.getElementById('outputDisplay').value = plotedNumber[plotedNumber.length - 1]
 }
 
+function findKeyCode(e) {
+    var element = document.querySelector(`td[data-key="${e.keyCode}"]`);
+    console.log(e.keyCode);
+    if (element != null) {
+        element.onclick();
+    }
+}
+
+function keyDownEvent() {
+    window.addEventListener('keydown', findKeyCode);
+}
+
 function clearDisplay() {
     console.log('clear')
     document.getElementById('inputDisplay').value = null;
