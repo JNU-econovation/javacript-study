@@ -46,11 +46,11 @@ function multiply(leftNum, rightNum){
     return parseInt(leftNum)*parseInt(rightNum);
 }
 
-function divide(leftNum, b){
+function divide(leftNum, rightNum){
     return parseInt(leftNum)/parseInt(rightNum);
 }
 
-function subtract(leftNum, b){
+function subtract(leftNum, rightNum){
     return parseInt(leftNum)-parseInt(rightNum);
 }
 
