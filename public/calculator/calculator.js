@@ -34,3 +34,9 @@ function enterToCalculate() {
     }
     document.getElementById('outputDisplay').value = plotedNumber[plotedNumber.length - 1]
 }
+
+function clearDisplay() {
+    console.log('clear')
+    document.getElementById('inputDisplay').value = null;
+    document.getElementById('outputDisplay').value = null;
+}
