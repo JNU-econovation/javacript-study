@@ -5,46 +5,54 @@
         <script src="cal_module.js"></script>
         <style>
             table {
-                float: right;
                 width: 100px;
                 height: 150px;
             }
         </style>
     </head>
-    <body style="text-align: right">
+    <body>
         <h2>Calculator using module Example</h2>
         Insert number and sign
         <form action="calWork.html">
             <br>
-            <input type="text" id="input" value="" style="width:80px; height:25px; text-align:right">
-            <br>
-            <input type="text" id="output" value="" style="width:80px; height:25px; text-align:right">
-            <br>
             <table style="text-align: center">
                 <tr>
-                    <th>1</th>
-                    <th>2</th>
-                    <th>3</th>
+                    <td colspan="4">
+                       <input type="text" id="input" value="">
+                    </td>
                 </tr>
                 <tr>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
+                    <td colspan="4">
+                        <input type="text" id="output" value="">
+                    </td>
                 </tr>
                 <tr>
-                    <th>7</th>
-                    <th>8</th>
-                    <th>9</th>
+                    <td colspan="3">C</td>
+                    <td onclick="divide">÷</td>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th>0</th>
-                    <th></th>
+                    <td onclick="enter1">1</td>
+                    <td onclick="enter2">2</td>
+                    <td onclick="enter3">3</td>
+                    <td onclick="multiply">×</td>
+                </tr>
+                <tr>
+                    <td onclick="enter4">4</td>
+                    <td onclick="enter5">5</td>
+                    <td onclick="enter6">6</td>
+                    <td onclick="substract">－</td>
+                </tr>
+                <tr>
+                    <td onclick="enter7">7</td>
+                    <td onclick="enter8">8</td>
+                    <td onclick="enter9">9</td>
+                    <td onclick="plus">＋</td>
+                </tr>
+                <tr>
+                    <td colspan="3">0</td>
+                    <td onclick="calculateResult">=</td>
                 </tr>
             </table>
-            <br><br><br><br><br><br><br><br>
-            <input type="button" onclick="rstFun()" value="Result" style="width: 50px; height: 30px">
-            <input type="reset" value="Clear" style="width: 50px; height: 30px">
         </form>
         <script>
             function setRst(returnValue) {
@@ -59,7 +67,7 @@
                 console.log(inputList);
                 
                 var count=0
-                while(count<inputList.length/3) {
+                while(count<inputList.lengtd/3) {
                     var rstValue;
                     var n1=parseInt(inputList[count*3]);
                     var sign=inputList[count*3+1];
