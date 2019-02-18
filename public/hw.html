@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/javascript" src="hw.js"></script>
+<link rel="stylesheet" href="hw.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div align="center">
+  <h3>멋진 계산기</h3>
+  <form action="" name="cal"></form>
+  <table border="1">
+    <tr>
+      <td colspan="2">
+        num1 : <input type="text" id="in1" value="0">
+      </td>
+      <td colspan="2">
+        num2 : <input type="text" id="in2" value="0">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        Result : <input type="text" id="out">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" onclick="reset()">C</td>
+      <td onclick="click_in('%')">%</td>
+      <td onclick="click_in('/')">/</td>
+    </tr>
+    <tr>
+      <td onclick="input(7)">7</td>
+      <td onclick="input(8)">8</td>
+      <td onclick="input(9)">9</td>
+      <td onclick="click_in('*')">*</td>
+    </tr>
+    <tr>
+      <td onclick="input(4)">4</td>
+      <td onclick="input(5)">5</td>
+      <td onclick="input(6)">6</td>
+      <td onclick="click_in('-')">-</td>
+    </tr>
+    <tr>
+      <td onclick="input(1)">1</td>
+      <td onclick="input(2)">2</td>
+      <td onclick="input(3)">3</td>
+      <td onclick="click_in('+')">+</td>
+    </tr>
+    <tr>
+      <td onclick="input(0)" colspan="2">0</td>
+      <td onclick="input('.')">.</td>
+      <td onclick="input('=')">=</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
