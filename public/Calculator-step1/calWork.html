@@ -12,7 +12,7 @@
     </head>
     <body>
         <h2>Calculator using module Example</h2>
-        Insert number and sign
+        Press number and sign
         <form action="calWork.html">
             <br>
             <table style="text-align: center">
@@ -27,70 +27,35 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">C</td>
-                    <td onclick="divide">÷</td>
+                    <td colspan="3" onclick="reset()">C</td>
+                    <td onclick="enterKey('÷')">÷</td>
                 </tr>
                 <tr>
-                    <td onclick="enter1">1</td>
-                    <td onclick="enter2">2</td>
-                    <td onclick="enter3">3</td>
-                    <td onclick="multiply">×</td>
+                    <td onclick="enterKey(1)">1</td>
+                    <td onclick="enterKey(2)">2</td>
+                    <td onclick="enterKey(3)">3</td>
+                    <td onclick="enterKey('×')">×</td>
                 </tr>
                 <tr>
-                    <td onclick="enter4">4</td>
-                    <td onclick="enter5">5</td>
-                    <td onclick="enter6">6</td>
-                    <td onclick="substract">－</td>
+                    <td onclick="enterKey(4)">4</td>
+                    <td onclick="enterKey(5)">5</td>
+                    <td onclick="enterKey(6)">6</td>
+                    <td onclick="enterKey('-')">－</td>
                 </tr>
                 <tr>
-                    <td onclick="enter7">7</td>
-                    <td onclick="enter8">8</td>
-                    <td onclick="enter9">9</td>
-                    <td onclick="plus">＋</td>
+                    <td onclick="enterKey(7)">7</td>
+                    <td onclick="enterKey(8)">8</td>
+                    <td onclick="enterKey(9)">9</td>
+                    <td onclick="enterKey('+')">＋</td>
                 </tr>
                 <tr>
-                    <td colspan="3">0</td>
-                    <td onclick="calculateResult">=</td>
+                    <td colspan="3" onclick="enterKey(0)">0</td>
+                    <td onclick="calculateResult()">=</td>
                 </tr>
             </table>
         </form>
         <script>
-            function setRst(returnValue) {
-                document.getElementById("result").value=returnValue;
-                //갱신 될 때마다 값 가져와야 하니까
-            }
 
-            function rstFun() {
-                var input = document.getElementById("input").value;
-                var inputList = input.split(" ");
-                console.log(typeof(input));
-                console.log(inputList);
-                
-                var count=0
-                while(count<inputList.lengtd/3) {
-                    var rstValue;
-                    var n1=parseInt(inputList[count*3]);
-                    var sign=inputList[count*3+1];
-                    var n2=parseInt(inputList[count*3+2]);
-                    console.log("[input]"+n1+" "+sign+" "+n2);
-
-                    if(sign=="+") {
-                        rstValue = plus(n1, n2);
-                    } else if(sign=="-") {
-                        rstValue = minus(n1, n2);
-                    } else if(sign=="*") {
-                        rstValue = multi(n1, n2);
-                    } else if(sign=="/") {
-                        rstValue = divide(n1, n2);
-z                    } else if(sign=="%") {
-                        rstValue = mod(n1, n2);
-                    }
-
-                    console.log("[output]"+rstValue);
-                    document.getElementById("output").value=rstValue;
-                    count++;
-                }
-            }
         </script>
     </body>
 </html>
