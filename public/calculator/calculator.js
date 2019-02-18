@@ -26,7 +26,7 @@ function enterToCalculate() {
     var plotedOperater = Expression.match(plotInputExpression);
     var result;
     if(checkExpression(plotedNumber)){
-        return errors();
+       return errors()
     }
     for (var i = 0; i < plotedOperater.length; i++) {
         result = selectOperator(plotedOperater[i])(parseFloat(plotedNumber[i]), parseFloat(plotedNumber[i + 1]));
@@ -45,6 +45,13 @@ function findKeyCode(e) {
 
 function keyDownEvent() {
     window.addEventListener('keydown', findKeyCode);
+}
+
+function inputToDisplay(element) {
+    var focusEle = document.activeElement;
+    if (document.getElementById('inputDisplay') != focusEle) {
+    document.getElementById('inputDisplay').value += element.innerHTML
+    }
 }
 
 function clearDisplay() {
