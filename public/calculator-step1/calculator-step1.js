@@ -2,7 +2,7 @@ function inputPad(i){
     document.getElementById("inputBar").value += i;
 }
 
-function clearAllBar(){
+function clearAllBars(){
     document.getElementById("inputBar").value = "";
     document.getElementById("resultBar").value = "";
 }
@@ -11,10 +11,8 @@ function equal(){
     var tempInput = document.getElementById("inputBar").value;
     var input = tempInput.replace(" ","");
     
-    if(checkLanguage(input) || checkNumberOfDigit(input) || checkNumberOfCalSym(input) || checkLocationOfCalSym(input)){
-        alert("잘못된 입력입니다."); 
-        clearAllBar();
-        return;
+    if(checkIsException(input)){
+        errors();
     }
     
     var resultObj = checkRegex(input);
@@ -23,10 +21,18 @@ function equal(){
     if(result == null){
         alert("0으로 나눌 수 없습니다.");
         return;
-        clearAllBar();
     }
     
     document.getElementById("resultBar").value = result;
+}
+
+function errors(){
+    alert("잘못된 형식입니다.");
+    clearAllBars();
+}
+
+function checkIsException(input){
+    
 }
 
 function checkNumberOfDigit(input){
@@ -83,20 +89,20 @@ function checkRegex(input){
     return resultObj;
 }
 
-function doMath(numA, numB, calSym){
+function doMath(leftNum, rightNum, calSym){
     switch(calSym){
         case '+':
-            return add(numA, numB);
+            return add(leftNum, rightNum);
             break;
         case '*':
-            return multiply(numA, numB);
+            return multiply(leftNum, rightNum);
             break;
         case '-':
-            return subtract(numA, numB);
+            return subtract(leftNum, rightNum);
             break;
         case '/':
             if(numB == 0){return null;}
-            return divide(numA, numB);
+            return divide(leftNum, rightNum);
             break;
     }
 }
