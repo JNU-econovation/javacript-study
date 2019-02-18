@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="cal_module.js"></script>
+        <style>
+            table {
+                float: right;
+                width: 100px;
+                height: 150px;
+            }
+        </style>
+    </head>
+    <body style="text-align: right">
+        <h2>Calculator using module Example</h2>
+        Insert number and sign
+        <form action="calWork.html">
+            <br>
+            <input type="text" id="input" value="" style="width:80px; height:25px; text-align:right">
+            <br>
+            <input type="text" id="output" value="" style="width:80px; height:25px; text-align:right">
+            <br>
+            <table style="text-align: center">
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                </tr>
+                <tr>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>0</th>
+                    <th></th>
+                </tr>
+            </table>
+            <br><br><br><br><br><br><br><br>
+            <input type="button" onclick="rstFun()" value="Result" style="width: 50px; height: 30px">
+            <input type="reset" value="Clear" style="width: 50px; height: 30px">
+        </form>
+        <script>
+            function setRst(returnValue) {
+                document.getElementById("result").value=returnValue;
+                //갱신 될 때마다 값 가져와야 하니까
+            }
+
+            function rstFun() {
+                var input = document.getElementById("input").value;
+                var inputList = input.split(" ");
+                console.log(typeof(input));
+                console.log(inputList);
+                
+                var count=0
+                while(count<inputList.length/3) {
+                    var rstValue;
+                    var n1=parseInt(inputList[count*3]);
+                    var sign=inputList[count*3+1];
+                    var n2=parseInt(inputList[count*3+2]);
+                    console.log("[input]"+n1+" "+sign+" "+n2);
+
+                    if(sign=="+") {
+                        rstValue = plus(n1, n2);
+                    } else if(sign=="-") {
+                        rstValue = minus(n1, n2);
+                    } else if(sign=="*") {
+                        rstValue = multi(n1, n2);
+                    } else if(sign=="/") {
+                        rstValue = divide(n1, n2);
+z                    } else if(sign=="%") {
+                        rstValue = mod(n1, n2);
+                    }
+
+                    console.log("[output]"+rstValue);
+                    document.getElementById("output").value=rstValue;
+                    count++;
+                }
+            }
+        </script>
+    </body>
+</html>
