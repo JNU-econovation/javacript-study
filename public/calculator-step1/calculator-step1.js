@@ -16,8 +16,8 @@ function equal(){
         return;
     }
     
-    var resultObj = checkRegex(input);
-    var result = doMath(resultObj.numA, resultObj.numB, resultObj.calSym);
+    var ResultObj = checkRegex(input);
+    var result = doMath(ResultObj.numA, ResultObj.numB, ResultObj.calSym);
     
     if(result == null){
         alert("0으로 나눌 수 없습니다.");
@@ -32,6 +32,7 @@ function errors(){
 }
 
 function checkIsException(input){
+    if(input == null) {return true;}
     var splitedBySym = input.split(/[+*/-]/);
     if(splitedBySym[0] == "" || splitedBySym[splitedBySym.length-1] == "") {return true;}
     if(splitedBySym.length >= 3) {return true;}
@@ -61,12 +62,12 @@ function checkRegex(input){
     var numB = input.match(patternNums)[1];
     var calSym = input.match(patternCalSym)[0];
     
-    var resultObj = {
+    var ResultObj = {
         'numA' : numA,
         'numB' : numB,
         'calSym' : calSym
     }
-    return resultObj;
+    return ResultObj;
 }
 
 function doMath(leftNum, rightNum, calSym){
