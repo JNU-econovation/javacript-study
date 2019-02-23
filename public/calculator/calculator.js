@@ -43,7 +43,7 @@ function findKeyCode(e) {
     }
 }
 
-function keyDownEvent() {
+function runKeyDownEvent() {
     window.addEventListener('keydown', findKeyCode);
 }
 
