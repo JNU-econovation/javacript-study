@@ -2,19 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="cal_reset.js"></script>
-    <script src="cal_add.js"></script>
-    <script src="cal_calculate.js"></script>
+    <script src="CalculatorSource.js"></script>
     <title>Calculator</title>
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" >
 </head>
 <body>
     <table border="1">
-        <caption>judy_calculator</caption>
+        <caption>calculator</caption>
         <tr>
            <td colspan="4">
                 <input type="text" id="input" style="text-align:right;">
@@ -26,28 +20,28 @@
             </td>
         </tr>    
         <tr>
-            <td onclick="add(9)">9</td>
-            <td onclick="add(8)">8</td>
-            <td onclick="add(7)">7</td>
-            <td onclick="add('+')">+</td>
+            <td onclick="give(9)">9</td>
+            <td onclick="give(8)">8</td>
+            <td onclick="give(7)">7</td>
+            <td onclick="give('+')">+</td>
         </tr>
          <tr>
-            <td onclick="add(6)">6</td>
-            <td onclick="add(5)">5</td>
-            <td onclick="add(4)">4</td>
-            <td onclick="add('-')">-</td>
+            <td onclick="give(6)">6</td>
+            <td onclick="give(5)">5</td>
+            <td onclick="give(4)">4</td>
+            <td onclick="give('-')">-</td>
         </tr>
          <tr>
-            <td onclick="add(3)">3</td>
-            <td onclick="add(2)">2</td>
-            <td onclick="add(1)">1</td>
-            <td onclick="add('*')">+</td>
+            <td onclick="give(3)">3</td>
+            <td onclick="give(2)">2</td>
+            <td onclick="give(1)">1</td>
+            <td onclick="give('*')">*</td>
         </tr>
         <tr>
             <td onclick="reset()">AC</td>
-            <td onclick="add(0)">0</td>
-            <td onclick="start_cal()">=</td>
-            <td onclick="add('/')">/</td>
+            <td onclick="give(0)">0</td>
+            <td onclick="startCal()">=</td>
+            <td onclick="give('/')">/</td>
         </tr>
     </table>    
 </body>
