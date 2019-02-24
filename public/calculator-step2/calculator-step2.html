@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>calculator-step1</title>
+    <script type="text/javascript" src="calculator-step2.js"></script>
+    <link rel="stylesheet" href="calculator-step2.css" type="text/css">
+</head>
+<body>
+  <table border="3">
+     <tr>
+        <td colspan="4"><input id="inputBar" style="cursor: auto"></td>
+     </tr>
+     <tr>
+         <td colspan="3" onclick="clearAllBars()" class="pnt">C</td>
+         <td onclick="inputPad('+')" class="pnt">+</td>
+     </tr>
+     <tr>
+         <td onclick="inputPad(7)" class="pnt">7</td>
+         <td onclick="inputPad(8)" class="pnt">8</td>
+         <td onclick="inputPad(9)" class="pnt">9</td>
+         <td onclick="inputPad('-')" class="pnt">-</td>
+     </tr>
+     <tr>
+         <td onclick="inputPad(4)" class="pnt">4</td>
+         <td onclick="inputPad(5)" class="pnt">5</td>
+         <td onclick="inputPad(6)" class="pnt">6</td>
+         <td onclick="inputPad('*')" class="pnt">*</td>
+     </tr>
+     <tr>
+         <td onclick="inputPad(1)" class="pnt">1</td>
+         <td onclick="inputPad(2)" class="pnt">2</td>
+         <td onclick="inputPad(3)" class="pnt">3</td>
+         <td onclick="inputPad('/')" class="pnt">÷</td>
+     </tr>
+     <tr>
+        <td colspan="2" onclick="inputPad(0)" class="pnt">0</td>
+        <td class="pnt">.</td>
+        <td onclick="equal()" class="pnt">=</td>
+     </tr>
+  </table>
+</body>
+</html>
