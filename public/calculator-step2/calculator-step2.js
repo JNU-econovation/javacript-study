@@ -1,10 +1,68 @@
-function inputPad(i){
-    document.getElementById("inputBar").value += i;
+var isLaterNumberInput = false;
+var isLaterNumberInputStart = false;
+var CalculatorData = {
+    'formerNumber': null,
+    'laterNumber': null,
+    'symbol': null
 }
 
-function clearAllBars(){
-    document.getElementById("inputBar").value = "";
-    document.getElementById("resultBar").value = "";
+function clickNumber(number){
+    var displayBar = document.getElementById("displayBar");
+    
+    if(!isLaterNumberInput){
+        if(displayBar.value != 0){
+            displayBar.value += number;    
+            return;
+        }
+        displayBar.value = number;
+        return;
+    }
+    
+    if(isLaterNumberInput){
+        if(isLaterNumberInputStart){
+            displayBar.value += number;
+            return;
+        }
+        displayBar.value = number;
+        isLaterNumberInputStart = true;
+        return;
+    }
+}
+
+function clickSymbol(symbol){
+    var displayBar = document.getElementById("displayBar");
+    
+    if(CalculatorData.formerNumber != null){
+        equal();
+    }
+    
+    CalculatorData.formerNumber = displayBar.value;
+    CalculatorData.symbol = symbol;
+    
+    isLaterNumberInput = true;
+    isLaterNumberInputStart = false;
+}
+
+function initCalculatorData(){
+    CalculatorData.formerNumber = null;
+    CalculatorData.laterNumber = null;
+    CalculatorData.symbol = null;
+}
+
+function equal(){
+    if(CalculatorData.laterNumber == null){
+        return;
+    }
+    
+    CalculatorData.laterNumber = displayBar.value;
+    isLaterNumberInput = false;
+    isLaterNumberInputStart = false;
+    document.getElementById("displayBar").value = doMath(CalculatorData);
+    initCalculatorData();
+}
+
+function clearDisplay(){
+    document.getElementById("displayBar").value = "0";
 }
 
 function equal(){
@@ -23,12 +81,12 @@ function equal(){
         alert("0으로 나눌 수 없습니다.");
         return;
     }
-    document.getElementById("resultBar").value = result;
+    document.getElementById("displayBar").value = result;
 }
 
 function errors(){
     alert("잘못된 형식입니다.");
-    clearAllBars();
+    clearDisplay();
 }
 
 function checkIsException(input){
@@ -40,19 +98,19 @@ function checkIsException(input){
 }
 
 function add(leftNum, rightNum){
-    return parseInt(leftNum)+parseInt(rightNum);
+    return parseFloat(leftNum)+parseFloat(rightNum);
 }
 
 function multiply(leftNum, rightNum){
-    return parseInt(leftNum)*parseInt(rightNum);
+    return parseFloat(leftNum)*parseFloat(rightNum);
 }
 
 function divide(leftNum, rightNum){
-    return parseInt(leftNum)/parseInt(rightNum);
+    return parseFloat(leftNum)/parseFloat(rightNum);
 }
 
 function subtract(leftNum, rightNum){
-    return parseInt(leftNum)-parseInt(rightNum);
+    return parseFloat(leftNum)-parseFloat(rightNum);
 }
 
 function checkRegex(input){
@@ -70,20 +128,16 @@ function checkRegex(input){
     return ResultObj;
 }
 
-function doMath(leftNum, rightNum, calSym){
-    switch(calSym){
+function doMath(CalculatorData){
+    switch(CalculatorData.symbol){
         case '+':
-            return add(leftNum, rightNum);
-            break;
+            return add(CalculatorData.formerNumber, CalculatorData.laterNumber);
         case '*':
-            return multiply(leftNum, rightNum);
-            break;
+            return multiply(CalculatorData.formerNumber, CalculatorData.laterNumber);
         case '-':
-            return subtract(leftNum, rightNum);
-            break;
+            return subtract(CalculatorData.formerNumber, CalculatorData.laterNumber);
         case '/':
-            if(numB == 0){return null;}
-            return divide(leftNum, rightNum);
-            break;
+            if(CalculatorData.laterNumber == 0){return 'ERROR';}
+            return divide(CalculatorData.formerNumber, CalculatorData.laterNumber);
     }
 }
