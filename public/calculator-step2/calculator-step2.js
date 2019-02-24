@@ -40,6 +40,7 @@ function clickSymbol(symbol){
     
     // Queue
     if(calculatorQueue.length == 3){
+        // should check its composite is num-sym-num
         console.log("Bfter Do Math : " + calculatorQueue);
         calculatorQueue.push(doMath());
         displayBar.value = calculatorQueue[0];
@@ -61,14 +62,13 @@ function equal(){
     calculatorQueue.push(displayBar.value);
     
     if(calculatorQueue.length == 1){
-        var tempNumber = calculatorQueue.shift();
-        displayBar.value = tempNumber;
         return;
     }
     
     isNumberInputDone = false;
     isNumberInputStart = false;
     displayBar.value = doMath();
+    
 }
 
 function clearDisplay(){
