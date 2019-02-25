@@ -2,14 +2,6 @@ var isNumberInputDone = false;
 var isNumberInputStart = false;
 var calculatorQueue = [];
 
-/*
-var queue = [];
-queue.push(2);         // queue is now [2]
-queue.push(5);         // queue is now [2, 5]
-var i = queue.shift(); // queue is now [5]
-alert(i);              // displays 2
-*/
-
 function clickNumber(number){
     var displayBar = document.getElementById("displayBar");
     
@@ -60,15 +52,15 @@ function clickSymbol(symbol){
 function equal(){
     var displayBar = document.getElementById("displayBar");
     calculatorQueue.push(displayBar.value);
-    
+        
     if(calculatorQueue.length == 1){
+        calculatorQueue.shift();
         return;
     }
     
     isNumberInputDone = false;
     isNumberInputStart = false;
     displayBar.value = doMath();
-    
 }
 
 function clearDisplay(){
@@ -78,26 +70,26 @@ function clearDisplay(){
     isNumberInputStart = false;
 }
 
-function add(leftNum, rightNum){
-    return parseFloat(leftNum)+parseFloat(rightNum);
+function add(formerNumber, laterNumber){
+    return formerNumber+laterNumber;
 }
 
-function multiply(leftNum, rightNum){
-    return parseFloat(leftNum)*parseFloat(rightNum);
+function multiply(formerNumber, laterNumber){
+    return formerNumber*laterNumber;
 }
 
-function divide(leftNum, rightNum){
-    return parseFloat(leftNum)/parseFloat(rightNum);
+function divide(formerNumber, laterNumber){
+    return formerNumber/laterNumber;
 }
 
-function subtract(leftNum, rightNum){
-    return parseFloat(leftNum)-parseFloat(rightNum);
+function subtract(formerNumber, laterNumber){
+    return formerNumber-laterNumber;
 }
 
 function doMath(){
-    var formerNumber = calculatorQueue.shift();
+    var formerNumber = parseFloat(calculatorQueue.shift());
     var symbol = calculatorQueue.shift();
-    var laterNumber = calculatorQueue.shift();
+    var laterNumber = parseFloat(calculatorQueue.shift());
     
     switch(symbol){
         case '+':
