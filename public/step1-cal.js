@@ -17,7 +17,7 @@ function check(inputValue){
 
 function save(inputValue){
   console.log(inputValue);
-  var windowMath = /[%*/+-]/;
+  var windowMath = /[%*/+-]/g;
   var windowArea = /\d+/g;
   var left = parseFloat(inputValue.match(windowArea)[0]);
   console.log(left);
