@@ -44,7 +44,6 @@ function clickSymbol(symbol){
     }
     
     calculatorQueue.push(symbol);
-    
     isNumberInputDone = true;
     isNumberInputStart = false;
 }
@@ -70,20 +69,19 @@ function clearDisplay(){
     isNumberInputStart = false;
 }
 
-function add(formerNumber, laterNumber){
-    return formerNumber+laterNumber;
-}
-
-function multiply(formerNumber, laterNumber){
-    return formerNumber*laterNumber;
-}
-
-function divide(formerNumber, laterNumber){
-    return formerNumber/laterNumber;
-}
-
-function subtract(formerNumber, laterNumber){
-    return formerNumber-laterNumber;
+function calculate(symbol){
+    var CalculationFuncs = {
+        '+' : function(former, later){return former+later;},
+        '-' : function(former, later){return former-later;},
+        '*' : function(former, later){return former*later;},
+        '/' : function(former, later){
+            if(later == 0){
+                return "ERROR";
+            }
+            return former/later;
+        },
+    }
+    return CalculationFuncs[symbol];
 }
 
 function doMath(){
@@ -91,15 +89,5 @@ function doMath(){
     var symbol = calculatorQueue.shift();
     var laterNumber = parseFloat(calculatorQueue.shift());
     
-    switch(symbol){
-        case '+':
-            return add(formerNumber, laterNumber);
-        case '*':
-            return multiply(formerNumber, laterNumber);
-        case '-':
-            return subtract(formerNumber, laterNumber);
-        case '/':
-            if(laterNumber == 0){return 'ERROR';}
-            return divide(formerNumber, laterNumber);
-    }
+    return calculate(symbol)(formerNumber, laterNumber);
 }
