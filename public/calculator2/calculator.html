@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<script>
+</script>
+
+<body>
+    <table border="1">
+        <tr>
+            <td colspan="4">
+                <input type="text" id="display">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="basic_element" data-key="Escape" onclick="clearDisplay()">clear</td>
+            <td class="basic_element" data-key="+" onclick="javascript:readyToCalculate(this)">+</td>
+        </tr>
+        <tr>
+            <td class="basic_element" data-key="1" onclick="javascript:inputToDisplay(this)">1</td>
+            <td class="basic_element" data-key="2" onclick="javascript:inputToDisplay(this)">2</td>
+            <td class="basic_element" data-key="3" onclick="javascript:inputToDisplay(this)">3</td>
+            <td class="basic_element" data-key="-" onclick="javascript:readyToCalculate(this)">-</td>
+        </tr>
+        <tr>
+            <td class="basic_element" data-key="4" onclick="javascript:inputToDisplay(this)">4</td>
+            <td class="basic_element" data-key="5" onclick="javascript:inputToDisplay(this)">5</td>
+            <td class="basic_element" data-key="6" onclick="javascript:inputToDisplay(this)">6</td>
+            <td class="basic_element" data-key="*" onclick="javascript:readyToCalculate(this)">*</td>
+        </tr>
+        <tr>
+            <td class="basic_element" data-key="7" onclick="javascript:inputToDisplay(this)">7</td>
+            <td class="basic_element" data-key="8" onclick="javascript:inputToDisplay(this)">8</td>
+            <td class="basic_element" data-key="9" onclick="javascript:inputToDisplay(this)">9</td>
+            <td class="basic_element" data-key="/" onclick="javascript:readyToCalculate(this)">/</td>
+            
+        </tr>
+        <tr>
+            <td colspan="3" class="basic_element" data-key="0" onclick="javascript:inputToDisplay(this)">0</td>
+            <td class="basic_element" data-key="." onclick="javascript:inputToDisplay(this)">.</td>
+        </tr>
+    </table>
+</body>
+
+</html>
