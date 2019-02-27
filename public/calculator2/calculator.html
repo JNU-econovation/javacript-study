@@ -4,16 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="calculator.js"></script>
     <title>calculator</title>
 </head>
 <script>
+    runKeyDownEvent();
 </script>
 
 <body>
     <table border="1">
         <tr>
             <td colspan="4">
-                <input type="text" id="display" disabled>
+                <input type="text" id="display" readonly>
             </td>
         </tr>
         <tr>
@@ -40,8 +42,9 @@
             
         </tr>
         <tr>
-            <td colspan="3" class="basic_element" data-key="0" onclick="javascript:inputToDisplay(this)">0</td>
+            <td colspan="2" class="basic_element" data-key="0" onclick="javascript:inputToDisplay(this)">0</td>
             <td class="basic_element" data-key="." onclick="javascript:inputToDisplay(this)">.</td>
+            <td class="basic_element" data-key="Enter" onclick="javascript:finish()">=</td>
         </tr>
     </table>
 </body>

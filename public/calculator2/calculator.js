@@ -1,25 +1,52 @@
+var READY = 2;
 var ON = 1;
 var OFF = 0;
 var statusOfcalculation = OFF;
 var symbol;
-
-function getValue(){
-    return document.getElementById(display).value;
+var cal = [];
+function getValue() {
+    return document.getElementById('display').value;
 }
 
-function inpuToDisplay(element){
-    var value;
-    if(OFF){
-        value = element.innerHTML;
+function inputQ(element) {
+    cal.push(parseFloat(element));
+    console.log(cal)
+}
+
+function deleteQ() {
+    return cal.shift();
+}
+
+function isError(value){
+    if(!isNaN() || value == Infinity){
+        return true;
     }
-    if(ON){
-        value = selectOperator(symbol)(parseFloat(getValue),parseFloat(element.HTML));
+    return false;
+}
+
+function inputToDisplay(element) {
+    if (statusOfcalculation) {
+        clearDisplay();
     }
-    document.getElementById(display).value += value;
+    document.getElementById('display').value += element.innerHTML;
+}
+
+function errors(){
+    alert("계산이 불가능합니다.")
+}
+
+
+function calculate() {
+    var value = selectOperator(symbol)(deleteQ(), deleteQ());
+    if(isError()){
+        errors();
+    }
+    inputQ(value);
+    document.getElementById('display').value = value;
 }
 
 function selectOperator(operator) {
-    statusOfcalculation = OFF;
+    console.log(operator);
     var calculation = {
         '+': function (leftNumber, rightNumber) { return leftNumber + rightNumber },
         '-': function (leftNumber, rightNumber) { return leftNumber - rightNumber },
@@ -29,14 +56,20 @@ function selectOperator(operator) {
     return calculation[operator];
 }
 
-function setOpreator(element){
+function setOpreator(element) {
+
     statusOfcalculation = ON;
+    inputQ(getValue());
+
+    if (cal.length == 2) {
+        calculate();
+    }
     symbol = element.innerHTML;
 }
 
 function findKeyCode(e) {
     var element = document.querySelector(`td[data-key="${e.key}"]`);
-    console.log(e.keyCode);
+    console.log(e.key);
     if (element != null) {
         element.onclick();
     }
@@ -47,8 +80,14 @@ function runKeyDownEvent() {
 }
 
 function clearDisplay() {
+    statusOfcalculation = OFF
     console.log('clear');
-    document.getElementById('inputDisplay').value = null;
-    document.getElementById('outputDisplay').value = null;
+    document.getElementById('display').value = null;
 }
-
+function finish(){
+    statusOfcalculation = ON;
+    inputQ(getValue());
+    calculate();
+    symbol = null;
+    cal.length = 0;
+}
