@@ -1,6 +1,5 @@
-var READY = 2;
-var ON = 1;
-var OFF = 0;
+let ON = 1;
+let OFF = 0;
 var statusOfcalculation = OFF;
 var symbol;
 var cal = [];
@@ -17,8 +16,8 @@ function deleteQ() {
     return cal.shift();
 }
 
-function isError(value){
-    if(!isNaN() || value == Infinity){
+function isError(value) {
+    if (isNaN(value) || value == Infinity) {
         return true;
     }
     return false;
@@ -31,15 +30,17 @@ function inputToDisplay(element) {
     document.getElementById('display').value += element.innerHTML;
 }
 
-function errors(){
-    alert("계산이 불가능합니다.")
+function errors() {
+    alert("계산이 불가능합니다.");
 }
-
 
 function calculate() {
     var value = selectOperator(symbol)(deleteQ(), deleteQ());
-    if(isError()){
+    if (isError(value)) {
         errors();
+        clearDisplay();
+        clears();
+        return;
     }
     inputQ(value);
     document.getElementById('display').value = value;
@@ -57,10 +58,8 @@ function selectOperator(operator) {
 }
 
 function setOpreator(element) {
-
     statusOfcalculation = ON;
     inputQ(getValue());
-
     if (cal.length == 2) {
         calculate();
     }
@@ -84,10 +83,15 @@ function clearDisplay() {
     console.log('clear');
     document.getElementById('display').value = null;
 }
-function finish(){
+
+function finish() {
     statusOfcalculation = ON;
     inputQ(getValue());
     calculate();
+    clears();
+}
+
+function clears() {
     symbol = null;
     cal.length = 0;
 }
