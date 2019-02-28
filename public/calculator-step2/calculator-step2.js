@@ -2,18 +2,30 @@ var isNumberInputDone = false;
 var isNumberInputStart = false;
 var calculatorQueue = [];
 
+function initCalculator(){
+	document.getElementById("displayBar").value = "0";
+	window.addEventListener('keydown', inputNumberByKey);
+}
+
+function inputNumberByKey(e){
+	const key = document.querySelector(`td[data-key="${e.keyCode}"]`);
+	if(key == null) return;
+	console.log(key);
+	key.onclick();
+}
+
 function clickNumber(number){
     var displayBar = document.getElementById("displayBar");
-    
+
     if(!isNumberInputDone){
         if(displayBar.value != 0){
-            displayBar.value += number;    
+            displayBar.value += number;
             return;
         }
         displayBar.value = number;
         return;
     }
-    
+
     if(isNumberInputDone){
         if(isNumberInputStart){
             displayBar.value += number;
@@ -29,11 +41,11 @@ function clickSymbol(symbol){
     var displayBar = document.getElementById("displayBar");
     calculatorQueue.push(displayBar.value);
     console.log("clickSymbol : " + calculatorQueue);
-    
+
     // Queue
     if(calculatorQueue.length == 3){
         // should check its composite is num-sym-num
-        console.log("Bfter Do Math : " + calculatorQueue);
+        console.log("Before Do Math : " + calculatorQueue);
         calculatorQueue.push(doMath());
         displayBar.value = calculatorQueue[0];
         console.log("After Do Math : " + calculatorQueue);
@@ -42,7 +54,7 @@ function clickSymbol(symbol){
         isNumberInputStart = false;
         return;
     }
-    
+
     calculatorQueue.push(symbol);
     isNumberInputDone = true;
     isNumberInputStart = false;
@@ -51,12 +63,12 @@ function clickSymbol(symbol){
 function equal(){
     var displayBar = document.getElementById("displayBar");
     calculatorQueue.push(displayBar.value);
-        
+
     if(calculatorQueue.length == 1){
         calculatorQueue.shift();
         return;
     }
-    
+
     isNumberInputDone = false;
     isNumberInputStart = false;
     displayBar.value = doMath();
@@ -88,6 +100,6 @@ function doMath(){
     var formerNumber = parseFloat(calculatorQueue.shift());
     var symbol = calculatorQueue.shift();
     var laterNumber = parseFloat(calculatorQueue.shift());
-    
+
     return calculate(symbol)(formerNumber, laterNumber);
 }

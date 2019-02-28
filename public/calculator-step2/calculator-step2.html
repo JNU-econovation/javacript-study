@@ -15,31 +15,31 @@
          <td onclick="clickSymbol('+')" class="pnt">+</td>
      </tr>
      <tr>
-         <td onclick="clickNumber(7)" class="pnt">7</td>
-         <td onclick="clickNumber(8)" class="pnt">8</td>
-         <td onclick="clickNumber(9)" class="pnt">9</td>
+         <td data-key="55" onclick="clickNumber(7)" class="pnt">7</td>
+         <td data-key="56" onclick="clickNumber(8)" class="pnt">8</td>
+         <td data-key="57" onclick="clickNumber(9)" class="pnt">9</td>
          <td onclick="clickSymbol('-')" class="pnt">-</td>
      </tr>
      <tr>
-         <td onclick="clickNumber(4)" class="pnt">4</td>
-         <td onclick="clickNumber(5)" class="pnt">5</td>
-         <td onclick="clickNumber(6)" class="pnt">6</td>
+         <td data-key="52" onclick="clickNumber(4)" class="pnt">4</td>
+         <td data-key="53" onclick="clickNumber(5)" class="pnt">5</td>
+         <td data-key="54" onclick="clickNumber(6)" class="pnt">6</td>
          <td onclick="clickSymbol('*')" class="pnt">*</td>
      </tr>
      <tr>
-         <td onclick="clickNumber(1)" class="pnt">1</td>
-         <td onclick="clickNumber(2)" class="pnt">2</td>
-         <td onclick="clickNumber(3)" class="pnt">3</td>
+         <td data-key="49" onclick="clickNumber(1)" class="pnt">1</td>
+         <td data-key="50" onclick="clickNumber(2)" class="pnt">2</td>
+         <td data-key="51" onclick="clickNumber(3)" class="pnt">3</td>
          <td onclick="clickSymbol('/')" class="pnt">÷</td>
      </tr>
      <tr>
-        <td colspan="2" onclick="clickNumber(0)" class="pnt">0</td>
-        <td onclick="clickNumber('.')" class="pnt">.</td>
+        <td data-key="48" colspan="2" onclick="clickNumber(0)" class="pnt">0</td>
+        <td data-key="190" onclick="clickNumber('.')" class="pnt">.</td>
         <td onclick="equal()" class="pnt">=</td>
      </tr>
   </table>
   <script>
-      document.getElementById("displayBar").value = "0";
-    </script>
+  	initCalculator();
+  </script>
 </body>
 </html>
