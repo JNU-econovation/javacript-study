@@ -1,6 +1,6 @@
 const READY = true;
 const DONE = false;
-let statusOfcalculation = OFF;
+let statusOfcalculation = DONE;
 var symbol;
 var calculationQueue = [];
 
@@ -8,7 +8,7 @@ function $(selector) {
     return document.querySelector(selector);
 }
 
-function addQueue(element) {
+function enQueue(element) {
     calculationQueue.push(parseFloat(element));
 }
 
