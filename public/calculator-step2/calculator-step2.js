@@ -27,9 +27,9 @@ function clickNumber(number){
 	}
 
 	if(inputStatement == DONE){
-        displayBar.value = number;
-        inputStatement = STARTED;
-        return;
+		displayBar.value = number;
+		inputStatement = STARTED;
+		return;
 	}
 
 	if(inputStatement == STARTED){
