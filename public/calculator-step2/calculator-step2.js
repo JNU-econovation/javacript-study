@@ -4,8 +4,6 @@ var inputStatement = DONE;
 var isDotUsed = false;
 var calculatorQueue = [];
 
-const dot = '.';
-
 function initCalculator(){
 	document.getElementById("displayBar").value = "0";
 	window.addEventListener('keydown', inputNumberByKey);
@@ -49,7 +47,7 @@ function clickSymbol(symbol){
 		calculatorQueue.push(doMath());
 		$("#displayBar").value = calculatorQueue[0];
 		calculatorQueue.push(symbol);
-		
+		initInputStatement();
 		return;
 	}
 	calculatorQueue.push(symbol);
@@ -70,8 +68,7 @@ function equal(){
 function clearDisplay(){
 	calculatorQueue = [];
 	$("#displayBar").value = "0";
-	inputStatement = DONE;
-	isDotUsed = false;
+	initInputStatement();
 }
 
 function calculate(symbol){
