@@ -1,10 +1,12 @@
+const DOT = '.';
+const NUMBEROFCALCULATION = parseInt(3);
+const ONLYONEINPUT = parseInt(1);
+
 const DONE = 0;
 const STARTED = 1;
 var inputStatement = DONE;
 var isDotUsed = false;
 var calculatorQueue = [];
-
-const dot = '.';
 
 function initCalculator(){
 	document.getElementById("displayBar").value = "0";
@@ -27,13 +29,10 @@ function inputNumberByKey(e){
 }
 
 function clickNumber(number){
-	if(number == dot){
-		if(isDotUsed) {
-			return;
-		}
+	if(number == DOT){
+		if(isDotUsed) return;
 		isDotUsed = true;
 	}
-
 	if(inputStatement == DONE){
 		$("#displayBar").value = number;
 		inputStatement = STARTED;
@@ -43,9 +42,8 @@ function clickNumber(number){
 }
 
 function clickSymbol(symbol){
-	calculatorQueue.push(displayBar.value);
-
-	if(calculatorQueue.length == 3){
+	calculatorQueue.push($("#displayBar").value);
+	if(calculatorQueue.length == NUMBEROFCALCULATION){
 		calculatorQueue.push(doMath());
 		$("#displayBar").value = calculatorQueue[0];
 		calculatorQueue.push(symbol);
@@ -58,8 +56,7 @@ function clickSymbol(symbol){
 
 function equal(){
 	calculatorQueue.push($("#displayBar").value);
-
-	if(calculatorQueue.length == 1){
+	if(calculatorQueue.length == ONLYONEINPUT){
 		calculatorQueue.shift();
 		return;
 	}
@@ -83,7 +80,7 @@ function calculate(symbol){
 	return CalculationFuncs[symbol];
 }
 
-function checkExceptionDivideBy(number) {
+function checkExceptionDivideBy(number, symbol) {
 	if(symbol == '/' && laterNumber == number) return true;
 }
 
@@ -91,7 +88,6 @@ function doMath(){
 	var formerNumber = parseFloat(calculatorQueue.shift());
 	var symbol = calculatorQueue.shift();
 	var laterNumber = parseFloat(calculatorQueue.shift());
-
-	if (checkExceptionDivideBy(0)) return "ERROR";
+	if (checkExceptionDivideBy(0, symbol)) return "ERROR";
 	return calculate(symbol)(formerNumber, laterNumber);
 }
