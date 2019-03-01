@@ -1,0 +1,27 @@
+table tr, td {
+    border: 1px solid;
+}
+
+table{
+    margin-top: 40px;
+    float: center;
+    width: 290px;
+    height: 400px;
+}
+
+td {
+    text-align: center;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+input{
+    width: 270px;
+    height: 45px;
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+    font-size: 18px;
+}

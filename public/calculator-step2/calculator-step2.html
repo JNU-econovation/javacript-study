@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>calculator-step2</title>
+    <script type="text/javascript" src="calculator-step2.js"></script>
+    <link rel="stylesheet" href="calculator-step2.css" type="text/css">
+</head>
+<body>
+  <table border="3">
+     <tr>
+        <td colspan="4"><input id="displayBar" disabled></td>
+     </tr>
+     <tr>
+         <td colspan="3" onclick="clearDisplay()" class="pointer">C</td>
+         <td onclick="clickSymbol('+')" class="pointer">+</td>
+     </tr>
+     <tr>
+         <td data-key="55" onclick="clickNumber(7)" class="pointer">7</td>
+         <td data-key="56" onclick="clickNumber(8)" class="pointer">8</td>
+         <td data-key="57" onclick="clickNumber(9)" class="pointer">9</td>
+         <td onclick="clickSymbol('-')" class="pointer">-</td>
+     </tr>
+     <tr>
+         <td data-key="52" onclick="clickNumber(4)" class="pointer">4</td>
+         <td data-key="53" onclick="clickNumber(5)" class="pointer">5</td>
+         <td data-key="54" onclick="clickNumber(6)" class="pointer">6</td>
+         <td onclick="clickSymbol('*')" class="pointer">*</td>
+     </tr>
+     <tr>
+         <td data-key="49" onclick="clickNumber(1)" class="pointer">1</td>
+         <td data-key="50" onclick="clickNumber(2)" class="pointer">2</td>
+         <td data-key="51" onclick="clickNumber(3)" class="pointer">3</td>
+         <td onclick="clickSymbol('/')" class="pointer">÷</td>
+     </tr>
+     <tr>
+        <td data-key="48" colspan="2" onclick="clickNumber(0)" class="pointer">0</td>
+        <td data-key="190" onclick="clickNumber('.')" class="pointer">.</td>
+        <td onclick="equal()" class="pointer">=</td>
+     </tr>
+  </table>
+  <script>
+  	initCalculator();
+  </script>
+</body>
+</html>
