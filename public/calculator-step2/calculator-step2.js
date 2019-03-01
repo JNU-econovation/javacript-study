@@ -4,9 +4,20 @@ var inputStatement = DONE;
 var isDotUsed = false;
 var calculatorQueue = [];
 
+const dot = '.';
+
 function initCalculator(){
 	document.getElementById("displayBar").value = "0";
 	window.addEventListener('keydown', inputNumberByKey);
+}
+
+function initInputStatement(){
+	inputStatement = DONE;
+	isDotUsed = false;
+}
+
+function $(selector){
+	return document.querySelector(selector);
 }
 
 function inputNumberByKey(e){
@@ -16,8 +27,6 @@ function inputNumberByKey(e){
 }
 
 function clickNumber(number){
-	var displayBar = document.getElementById("displayBar");
-
 	if(number == '.'){
 		if(isDotUsed) {
 			return;
@@ -26,49 +35,41 @@ function clickNumber(number){
 	}
 
 	if(inputStatement == DONE){
-		displayBar.value = number;
+		$("#displayBar").value = number;
 		inputStatement = STARTED;
 		return;
 	}
-
-	if(inputStatement == STARTED){
-		displayBar.value += number;
-		return;
-	}
+	$("#displayBar").value += number;
 }
 
 function clickSymbol(symbol){
-	var displayBar = document.getElementById("displayBar");
 	calculatorQueue.push(displayBar.value);
 
 	if(calculatorQueue.length == 3){
 		calculatorQueue.push(doMath());
-		displayBar.value = calculatorQueue[0];
+		$("#displayBar").value = calculatorQueue[0];
 		calculatorQueue.push(symbol);
-		inputStatement = DONE;
-		isDotUsed = false;
+		
 		return;
 	}
 	calculatorQueue.push(symbol);
-	inputStatement = DONE;
-	isDotUsed = false;
+	initInputStatement();
 }
 
 function equal(){
-	var displayBar = document.getElementById("displayBar");
-	calculatorQueue.push(displayBar.value);
+	calculatorQueue.push($("#displayBar").value);
 
 	if(calculatorQueue.length == 1){
 		calculatorQueue.shift();
 		return;
 	}
 	inputStatement = DONE;
-	displayBar.value = doMath();
+	$("#displayBar").value = doMath();
 }
 
 function clearDisplay(){
 	calculatorQueue = [];
-	document.getElementById("displayBar").value = "0";
+	$("#displayBar").value = "0";
 	inputStatement = DONE;
 	isDotUsed = false;
 }
@@ -78,14 +79,13 @@ function calculate(symbol){
 		'+' : function(former, later){return former+later;},
 		'-' : function(former, later){return former-later;},
 		'*' : function(former, later){return former*later;},
-		'/' : function(former, later){
-			if(later == 0){
-				return "ERROR";
-			}
-			return former/later;
-		},
+		'/' : function(former, later){return former/later;}
 	}
 	return CalculationFuncs[symbol];
+}
+
+function checkExceptionDivideBy(number) {
+	if(symbol == '/' && laterNumber == number) return true;
 }
 
 function doMath(){
@@ -93,5 +93,6 @@ function doMath(){
 	var symbol = calculatorQueue.shift();
 	var laterNumber = parseFloat(calculatorQueue.shift());
 
+	if (checkExceptionDivideBy(0)) return "ERROR";
 	return calculate(symbol)(formerNumber, laterNumber);
 }
