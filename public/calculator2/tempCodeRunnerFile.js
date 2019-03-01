@@ -4,15 +4,15 @@ let statusOfcalculation = OFF;
 var symbol;
 var calculationQueue = [];
 
-function $(selector) {
-    return document.querySelector(selector);
+function getValue() {
+    return document.getElementById('display').value;
 }
 
 function addQueue(element) {
     calculationQueue.push(parseFloat(element));
 }
 
-function deQueue() {
+function removeQueue() {
     return calculationQueue.shift();
 }
 
@@ -24,28 +24,31 @@ function isError(value) {
 }
 
 function inputToDisplay(element) {
-    if (statusOfcalculation == READY) {
+    if (statusOfcalculation) {
         clearDisplay();
     }
-    $("#display").value += element.innerHTML;
+    document.getElementById('display').value += element.innerHTML;
 }
 
 function errors() {
-    finishCalculation();
-    $("#display").value = 'ERROR';
+    document.getElementById('display').value = 'ERROR';
 }
 
 function calculate() {
     var value = selectOperator(symbol)(deleteQ(), deleteQ());
     if (isError(value)) {
         errors();
+        statusOfcalculation = READY;
+    inputQ(getValue());
+    calculate();
         return;
     }
     inputQ(value);
-    $("#display").value = value;
+    document.getElementById('display').value = value;
 }
 
 function selectOperator(operator) {
+    console.log(operator);
     var calculation = {
         '+': function (leftNumber, rightNumber) { return leftNumber + rightNumber },
         '-': function (leftNumber, rightNumber) { return leftNumber - rightNumber },
@@ -65,7 +68,8 @@ function setOpreator(element) {
 }
 
 function findKeyCode(e) {
-    var element = $(`td[data-key="${e.key}"]`);
+    var element = document.querySelector(`td[data-key="${e.key}"]`);
+    console.log(e.key);
     if (element != null) {
         element.onclick();
     }
@@ -76,18 +80,16 @@ function runKeyDownEvent() {
 }
 
 function clearDisplay() {
-    statusOfcalculation = DONE;
+    statusOfcalculation = DONE
+    console.log('clear');
     document.getElementById('display').value = null;
 }
 
-function finishCalculation() {
-    statusOfcalculation = READY;
-    inputQ(getValue());
-    calculate();
-    clearStatusOfCalculator();
+function finish() {
+    clears();
 }
 
-function clearStatusOfCalculator() {
+function clears() {
     symbol = null;
     cal.length = 0;
 }
