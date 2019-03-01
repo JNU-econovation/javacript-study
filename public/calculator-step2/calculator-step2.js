@@ -4,6 +4,8 @@ var inputStatement = DONE;
 var isDotUsed = false;
 var calculatorQueue = [];
 
+const dot = '.';
+
 function initCalculator(){
 	document.getElementById("displayBar").value = "0";
 	window.addEventListener('keydown', inputNumberByKey);
@@ -25,7 +27,7 @@ function inputNumberByKey(e){
 }
 
 function clickNumber(number){
-	if(number == '.'){
+	if(number == dot){
 		if(isDotUsed) {
 			return;
 		}
