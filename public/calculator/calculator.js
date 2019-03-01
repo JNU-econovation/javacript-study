@@ -37,7 +37,7 @@ function enterToCalculate() {
 
 function findKeyCode(e) {
     var element = document.querySelector(`td[data-key="${e.keyCode}"]`);
-    console.log(e.keyCode);
+    console.log(e);
     if (element != null) {
         element.onclick();
     }
