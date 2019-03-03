@@ -1,10 +1,19 @@
 function startCal(){
+    var resultValue = categorize(input);
+}
+
+
+
+function categorize(input){
     var input = documnet.getElementById('input');
     var numbers = input.split(/[\*\/\+\-]/);
     var leftNumber = numbers[0];
     var rightNumber = numbers[1];
-    var inputSymbol = /[+*/-]/g;
-    var Symbol = input.match(inputSymbol);
+    var inputsymbol = /[+*/-]/g;
+    var symbol = input.match(inputsymbol);
+
+    return resultValue;
+
 }
 
 function plus(leftNumber, rightNumber){
@@ -12,32 +21,30 @@ function plus(leftNumber, rightNumber){
 }
 
 function minus(leftNumber, rightNumber){
-    return parseInt(leftNumber)-parseInt(rightNumber);
+    return leftNumber-rightNumber;
 }
 
 function divide(leftNumber, rightNumber){
-    return parseInt(leftNumber)/parseInt(rightNumber);
+    return leftNumber/rightNumber;
 }
 
 function multiply(leftNumber, rightNumber){
-    return parseInt(leftNumber)*parseInt(rightNumber);
+    return leftNumber*rightNumber;
 }
     
 function checkSymbol(leftNumber, rightNumber, symbol){
-    switch(Symbol){
+    switch(symbol){
         case '+':
             return plus(leftNumber, rightNumber);
-            break;
         case '-':
-            return minus(leftNumber, rightNumber);
-            break;
+            return minus(leftNumber, rightNumber);            
         case '*':
-            return multiply(leftNumber, rightNumber);
-            break;
+            return multiply(leftNumber, rightNumber);          
         case '/':
             return divide(leftNumber, rightNumber);
-            break;
     }
+
+    
 }
 
 function reset() {
@@ -45,7 +52,7 @@ function reset() {
     document.getElementById('result').value = "";
 }
 
-function give(char) {
+function enter(char) {
     var input = document.getElementById('input');
     input.value = input.value + char;
 }  
