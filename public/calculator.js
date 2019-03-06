@@ -1,10 +1,12 @@
 
-function run() {
+function bringInput() {
+    return document.getElementById("input");
+}
 
+function run() {
     var regExp = /[0-9+/*-]/;
 
     window.addEventListener('keydown', function(e){
-        var input = document.getElementById("input");
         
         if(e.keyCode == 13) {
             calc();
@@ -15,26 +17,22 @@ function run() {
         }
 
         if(e.key.match(regExp)){
-            input.value += e.key;
+            bringInput().value += e.key;
         }
     });
 }
 
 function input(e) {
-    var input = document.getElementById("input");
-    input.value += e.innerHTML;
+    bringInput().value += e.innerHTML;
 }
 
 function clearAll() {
-    var input = document.getElementById("input");
-    input.value = '';
+    bringInput().value = '';
 }
 
 function calc() {
-
-    var input = document.getElementById("input");
-    var result = operator(input);
-    input.value = result;
+    var result = operator(bringInput());
+    bringInput().value = result;
 }
 
 
@@ -49,13 +47,12 @@ function operator(e) {
 
     var input = e.value;
     var regExp = /[+*/-]/;
-
-    var splited = input.split(regExp);
-    var operator = input.match(regExp);
-    var result;
     
+    var splited = String(input).split(regExp);
+    var operator = String(input).match(regExp);
+
     if(check(splited)){
-        
+
         switch (operator[0]) {
             case "+" : return plus(splited[0], splited[1]);
             case "-" : return minus(splited[0], splited[1]);
@@ -69,22 +66,18 @@ function operator(e) {
 
 }
 
-function plus(x ,y){
-    var ret = parseFloat(x) + parseFloat(y);
-    return ret;
+function plus(first ,second){
+    return parseFloat(first) + parseFloat(second);
 }
 
-function minus(x, y){
-    var ret = parseFloat(x) + parseFloat(y);
-    return x-y;
+function minus(first ,second){
+    return parseFloat(first) - parseFloat(second);
 }
 
-function divide(x, y) {
-    var ret = parseFloat(x) + parseFloat(y);
-    return x/y;
+function divide(first ,second) {
+    return parseFloat(first) / parseFloat(second);
 }
 
-function multiply(x, y) {
-    var ret = parseFloat(x) + parseFloat(y);
-    return x*y;
+function multiply(first ,second) {
+    return parseFloat(first) * parseFloat(second);
 }
