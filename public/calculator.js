@@ -6,31 +6,31 @@ function bringInput() {
 function run() {
     var regExp = /[0-9+/*-]/;
 
-    window.addEventListener('keydown', function(e){
+    window.addEventListener('keydown', function(element){
         
-        if(e.keyCode == 13) {
-            calc();
+        if(element.keyCode == 13) {
+            calculate();
         }
 
-        if(e.keyCode == 8){
+        if(element.keyCode == 8){
             clearAll();
         }
 
-        if(e.key.match(regExp)){
-            bringInput().value += e.key;
+        if(element.key.match(regExp)){
+            bringInput().value += element.key;
         }
     });
 }
 
-function input(e) {
-    bringInput().value += e.innerHTML;
+function input(element) {
+    bringInput().value += element.innerHTML;
 }
 
 function clearAll() {
     bringInput().value = '';
 }
 
-function calc() {
+function calculate() {
     var result = operator(bringInput());
     bringInput().value = result;
 }
@@ -40,12 +40,13 @@ function check(splited) {
     
     if(splited.length > 2){
         return false;
-    }else return true;
+    }
+    return true;
 }
 
-function operator(e) {
+function operator(element) {
 
-    var input = e.value;
+    var input = element.value;
     var regExp = /[+*/-]/;
     
     var splited = String(input).split(regExp);
@@ -60,9 +61,9 @@ function operator(e) {
             case "*" : return multiply(splited[0], splited[1]);
         }
 
-    } else {
-        return "error";
     }
+
+    return "error";
 
 }
 
