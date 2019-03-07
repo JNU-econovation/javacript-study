@@ -1,0 +1,58 @@
+body {
+    font-family: sans-serif;
+}
+
+.calculator {
+    border-style: solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 14rem;
+    margin: auto;
+}
+
+.result-wrapper {
+    background-color: white;
+    border-color: black;
+    text-align: right;
+    width: 100%;
+    height: 30px;
+}
+
+.expression-wrapper + .clickable-wrapper {
+    border-bottom : 5px solid black;
+}
+
+input {
+    text-align: right;
+    font-size: 1.25rem;
+    margin-left :auto;
+    margin-right :auto;
+    border-color:black;
+    outline: none;
+    width: 99%;
+    height: 30px;
+}
+
+.clickable-wrapper {
+    margin: auto;
+}
+
+.clickable-line {
+    display: flex;
+    max-width: 100%;
+}
+
+.clickable {
+    display: inline-block;
+    border-color:grey;
+    background-color: white;
+    transition: all 0.3s;
+    text-align: center;
+    font-size: 1.75em;
+    cursor: pointer;
+    width: 3.5rem;
+    height: 3rem;
+}
+
+.clickable:hover {
+    background-color:grey;
+}

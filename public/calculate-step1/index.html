@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./static/css/style.css" type="text/css" />
+        <script type="text/javascript" src="./static/js/calculator.js"></script>
+        <script type="text/javascript" src="./static/js/context.js"></script>
+        <script type="text/javascript" src="./static/js/input.js"></script>
+        <script type="text/javascript" src="./static/js/utils.js"></script>
+    </head>
+    <body onload="initialize()">
+        <main>
+            <div class="calculator">
+                <div class="result-wrapper">
+                    <div class="result" id="result">0</div>
+                </div>
+                <div class="expression-wrapper">
+                    <input type="text" id="expression"/>
+                </div>
+                <div class="clickable-wrapper">
+                    <div class="clickable-line">
+                        <div class="clickable" id="7" onClick='clickNumber(this)'>7</div>
+                        <div class="clickable" id="8" onClick='clickNumber(this)'>8</div>
+                        <div class="clickable" id="9" onClick='clickNumber(this)'>9</div>
+                        <div class="clickable" id="+" onClick='clickPlus()'>+</div>
+                    </div>
+                    <div class="clickable-line">
+                        <div class="clickable" id="4" onClick='clickNumber(this)'>4</div>
+                        <div class="clickable" id="5" onClick='clickNumber(this)'>5</div>
+                        <div class="clickable" id="6" onClick='clickNumber(this)'>6</div> 
+                        <div class="clickable" id="-" onClick='clickMinus()'>-</div>
+                    </div>
+                    <div class="clickable-line">
+                        <div class="clickable" id="1" onClick='clickNumber(this)'>1</div>
+                        <div class="clickable" id="2" onClick='clickNumber(this)'>2</div>
+                        <div class="clickable" id="3" onClick='clickNumber(this)'>3</div>    
+                        <div class="clickable" id="*" onClick='clickAsterisk()'>*</div>
+                    </div>
+                    <div class="clickable-line">
+                        <div class="clickable" > </div>
+                        <div class="clickable" id="0" onClick="clickNumber(this)">0</div>
+                        <div class="clickable" > </div>
+                        <div class="clickable" id="/" onClick='clickSlash()'>/</div>
+                    </div>
+                    <div class="clickable-line">
+                        <div class="clickable" onClick="clickClear()" >CE</div>
+                        <div class="clickable">R</div>
+                        <div class="clickable" onClick="clickEqual()">= </div>
+                        <div class="clickable" id="%" onClick='clickModulo()'>%</div>
+                    </div>
+                </div>    
+            </div>
+        </main>
+    </body>
+    
+</html>
