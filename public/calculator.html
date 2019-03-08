@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="calculator.css">
+    <script src = "calculator.js"></script>
+</head>
+
+<body onload="run()">
+    <table>
+        <tr>
+            <td colspan = "4">
+                <input type= "text" id = "input"/>
+            </td>
+        </tr>
+        <tr>
+            <td onclick= input(this)>7</td>
+            <td onclick= input(this)>8</td>
+            <td onclick= input(this)>9</td>
+            <td onclick= input(this)>+</td>
+        </tr>
+        <tr>
+            <td onclick= input(this)>4</td>
+            <td onclick= input(this)>5</td>
+            <td onclick= input(this)>6</td>
+            <td onclick= input(this)>-</td>
+        </tr>
+        <tr>
+            <td onclick= input(this)>1</td>
+            <td onclick= input(this)>2</td>
+            <td onclick= input(this)>3</td>
+            <td onclick= input(this)>*</td>
+        </tr>
+        <tr>
+            <td colspan="3" onclick= input(this)>0</td>
+            <td onclick= input(this)>/</td>
+        </tr>
+        <tr>
+            <td colspan="3" onclick= clearAll()>clear</td>
+            <td onclick= calculate(this)>=</td>
+        </tr>
+    </table>
+</body>
+
+</html>
