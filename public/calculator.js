@@ -1,11 +1,10 @@
 
-function bringInput() {
+function getInput() {
     return document.getElementById("input");
 }
 
 function run() {
     var regExp = /[0-9+/*-]/;
-
     window.addEventListener('keydown', function(element){
         
         if(element.keyCode == 13) {
@@ -17,68 +16,68 @@ function run() {
         }
 
         if(element.key.match(regExp)){
-            bringInput().value += element.key;
+            getInput().value += element.key;
         }
     });
 }
 
 function input(element) {
-    bringInput().value += element.innerHTML;
+    getInput().value += element.innerHTML;
 }
 
 function clearAll() {
-    bringInput().value = '';
+    getInput().value = '';
 }
 
 function calculate() {
-    var result = operator(bringInput());
-    bringInput().value = result;
+    var result = operator(getInput());
+    getInput().value = result;
 }
 
 
 function check(splited) {
-    
     if(splited.length > 2){
         return false;
     }
     return true;
 }
 
-function operator(element) {
-
-    var input = element.value;
+function operator(operator) {
+    var input = operator.value;
     var regExp = /[+*/-]/;
     
     var splited = String(input).split(regExp);
     var operator = String(input).match(regExp);
 
     if(check(splited)){
-
-        switch (operator[0]) {
-            case "+" : return plus(splited[0], splited[1]);
-            case "-" : return minus(splited[0], splited[1]);
-            case "/" : return divide(splited[0], splited[1]);
-            case "*" : return multiply(splited[0], splited[1]);
-        }
-
+        return selectOperator(operator)(parseFloat(splited[0]), parseFloat(splited[1]));   
     }
-
     return "error";
 
 }
 
+function selectOperator(operator) {
+    var calculation = {
+        '+' : function (first, second) {return first + second},
+        '-' : function (first, second) {return first - second},
+        '/' : function (first, second) {return first / second},   
+        '*' : function (first, second) {return first * second}
+    }
+    return calculation[operator];
+}
+
 function plus(first ,second){
-    return parseFloat(first) + parseFloat(second);
+    return first + second;
 }
 
 function minus(first ,second){
-    return parseFloat(first) - parseFloat(second);
+    return first - second;
 }
 
 function divide(first ,second) {
-    return parseFloat(first) / parseFloat(second);
+    return first / second;
 }
 
 function multiply(first ,second) {
-    return parseFloat(first) * parseFloat(second);
+    return first * second;
 }
