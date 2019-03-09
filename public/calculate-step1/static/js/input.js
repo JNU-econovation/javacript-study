@@ -7,33 +7,16 @@ const initialize = () => {
     bindKey();
 }
 
-const clickNumber = (node) => {
-    updateExpressionView(String(node.id));
-}
-
-const clickPlus = () => {
-    updateExpressionView('+');
-}
-
-const clickMinus = () => {
-    updateExpressionView('-');
-}
-
-const clickAsterisk = () => {
-    updateExpressionView('*');
-}
-
-const clickSlash = () => {
-    updateExpressionView('/');
-}
-
-const clickModulo = () => {
-    updateExpressionView('%');
-}
+const clickButton = (value) => {
+    appendExpressionView(value);
+} 
 
 const clickClear = () => {
-    expressionInput.value = ' '
-    updateExpressionView(expressionInput.value);
+    updateExpressionView('');
+}
+
+const clickBackspace = () => {
+    popExpressionView();
 }
 
 const clickEqual = () =>{
@@ -53,42 +36,56 @@ const clickEqual = () =>{
     showResult(result);
 }
 
-const updateExpressionView = (character) => {
+const appendExpressionView = (character) => {
     expressionInput.value += character;
 }
 
-const pressEnter = () => {
-    clickEqual();
+const popExpressionView = () => {
+    if(expressionInput.value.length > 0)
+        expressionInput.value = expressionInput.value.substring(0, expressionInput.value.length-1);
 }
 
-const bindKey = () => {
-    window.addEventListener('keydown', (e) => {
-        if (e.keyCode == 13 || e.keyCode == 187)
-            clickEqual();
-        
-        if (e.keyCode >= 48 && e.keyCode <= 58)
-            updateExpressionView(String(e.keyCode - 48));
-            
-        if (e.keyCode >= 96 && e.keyCode <= 99)
-            updateExpressionView(String(e.keyCode - 96));
-            
-        if (e.keyCode >= 100 && e.keyCode <= 105)
-            updateExpressionView(String(e.keyCode - 100 + 4));
-            
-        if (e.keyCode == 189 || e.keyCode == 109)
-            updateExpressionView('-');
-        
-        if (e.keyCode == 107)
-            updateExpressionView('+');
-            
-        if (e.keyCode == 106)
-            updateExpressionView('*');
-        
-        if (e.keyCode == 191)
-            updateExpressionView('/');
-    });
+const updateExpressionView = (expression) => {
+    expressionInput.value = expression;
 }
 
 const showResult = (result) => {
     resultView.textContent = result;
+}
+
+const bindKey = () => {
+    // TODO :: event bubleing
+    window.addEventListener('keydown', (e) => {
+        if (e.keyCode == 13 || e.keyCode == 187)
+            clickEqual();
+            
+        if (e.keyCode == 8)
+            popExpressionView();
+        
+        if (document.activeElement === expressionInput)
+            return;   
+        
+        if (e.keyCode >= 48 && e.keyCode <= 58)
+            appendExpressionView(String(e.keyCode - 48));
+            
+        if (e.keyCode >= 96 && e.keyCode <= 99)
+            appendExpressionView(String(e.keyCode - 96));
+            
+        if (e.keyCode >= 100 && e.keyCode <= 105)
+            appendExpressionView(String(e.keyCode - 100 + 4));
+            
+        if (e.keyCode == 189 || e.keyCode == 109)
+            appendExpressionView('-');
+        
+        if (e.keyCode == 107)
+            appendExpressionView('+');
+            
+        if (e.keyCode == 106)
+            appendExpressionView('*');
+        
+        if (e.keyCode == 191)
+            appendExpressionView('/');
+            
+        e.stopPropagation();
+    });
 }

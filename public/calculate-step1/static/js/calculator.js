@@ -12,29 +12,16 @@ const Calculator = {
         return a/b;
     },
     modulo : (a, b) => {
-        return a/b;
+        return a%b;
     },
-    run : function (leftValue, operator, rightValue){
-        let result = 0;
-        
-        switch(operator){
-            case "+":
-                result = this.plus(leftValue, rightValue);
-                break;
-            case "-":
-                result = this.minus(leftValue, rightValue);
-                break;
-            case "*":
-                result = this.multiply(leftValue, rightValue);
-                break;
-            case "/":
-                result = this.divide(leftValue, rightValue);
-                break;
-            case "%":
-                result = this.modulo(leftValue, rightValue);
-                break;
-        }
-        
-        return result;
+    mapper : {
+        "+" : (leftValue, rightValue) => Calculator.plus(leftValue, rightValue),
+        "-" : (leftValue, rightValue) => Calculator.minus(leftValue, rightValue),
+        "*" : (leftValue, rightValue) => Calculator.multiply(leftValue, rightValue),
+        "/" : (leftValue, rightValue) => Calculator.divide(leftValue, rightValue),
+        "%" : (leftValue, rightValue) => Calculator.modulo(leftValue, rightValue),
+    },
+    run : function(leftValue, operator, rightValue) {
+        return this.mapper[operator](leftValue, rightValue);
     }
 }

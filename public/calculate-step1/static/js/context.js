@@ -2,11 +2,11 @@ const operatorRegExp = /[%*/+-]/;
 const operatorArray = ['+', '-', '*', '/', '%'];
 
 const Context = {
-    getValues : (expression) => {
+    getValues : function (expression) {
         let values = expression.split(operatorRegExp);
         let operators = expression.match(operatorRegExp);
         
-        if(!Context.isValid(values, operators))
+        if(!this.isValid(values, operators))
             return { result: false }
         
         return {
