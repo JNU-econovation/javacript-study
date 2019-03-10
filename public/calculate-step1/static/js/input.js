@@ -52,34 +52,29 @@ const showResult = (result) => {
 const bindKey = () => {
     // TODO :: event bubbling
     window.addEventListener('keydown', (e) => {
-        if (e.keyCode == 13 || e.keyCode == 187)
+        console.log(e.key);
+        if (e.key == 'Enter' || e.keyCode == '=')
             clickEqual();
             
-        if (e.keyCode == 8)
+        if (e.key == 'Backspace')
             popExpressionView();
         
         if (document.activeElement === expressionInput)
             return;   
         
-        if (e.keyCode >= 48 && e.keyCode <= 58)
+        if (e.keyCode >= '0'.charCodeAt(0) && e.keyCode <= '9'.charCodeAt(0))
             appendExpressionView(String(e.keyCode - 48));
             
-        if (e.keyCode >= 96 && e.keyCode <= 99)
-            appendExpressionView(String(e.keyCode - 96));
-            
-        if (e.keyCode >= 100 && e.keyCode <= 105)
-            appendExpressionView(String(e.keyCode - 100 + 4));
-            
-        if (e.keyCode == 189 || e.keyCode == 109)
+        if (e.key == '-')
             appendExpressionView('-');
         
-        if (e.keyCode == 107)
+        if (e.key == '+')
             appendExpressionView('+');
             
-        if (e.keyCode == 106)
+        if (e.key == '*')
             appendExpressionView('*');
         
-        if (e.keyCode == 191)
+        if (e.key == '/')
             appendExpressionView('/');
             
         e.stopPropagation();
