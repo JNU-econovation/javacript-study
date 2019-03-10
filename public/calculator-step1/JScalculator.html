@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="CalculatorSource.js"></script>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" >
+</head>
+<body>
+    <table border="1">
+        <caption>calculator</caption>
+        <tr>
+           <td colspan="4">
+                <input type="text" id="input" style="text-align:right;">
+            </td>   
+        </tr>
+        <tr>
+        <td colspan="4">
+                <input type="text" id="result" style="text-align:right;" readonly="readonly">
+            </td>
+        </tr>    
+        <tr>
+            <td onclick="enter(9)">9</td>
+            <td onclick="enter(8)">8</td>
+            <td onclick="enter(7)">7</td>
+            <td onclick="enter('+')">+</td>
+        </tr>
+         <tr>
+            <td onclick="enter(6)">6</td>
+            <td onclick="enter(5)">5</td>
+            <td onclick="enter(4)">4</td>
+            <td onclick="enter('-')">-</td>
+        </tr>
+         <tr>
+            <td onclick="enter(3)">3</td>
+            <td onclick="enter(2)">2</td>
+            <td onclick="enter(1)">1</td>
+            <td onclick="enter('*')">*</td>
+        </tr>
+        <tr>
+            <td onclick="reset()">AC</td>
+            <td onclick="enter(0)">0</td>
+            <td onclick="startCal()">=</td>
+            <td onclick="enter('/')">/</td>
+        </tr>
+    </table>    
+</body>
+</html>

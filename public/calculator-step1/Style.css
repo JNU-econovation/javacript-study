@@ -1,0 +1,7 @@
+table, tr, td {
+    border-collapse : collapse;
+}
+
+input {
+    text-align: right;
+}
