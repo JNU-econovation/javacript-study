@@ -15,10 +15,6 @@ const clickClear = () => {
     updateExpressionView('');
 }
 
-const clickBackspace = () => {
-    popExpressionView();
-}
-
 const clickEqual = () =>{
     let expressionValues = Context.getValues(expressionInput.value);
     
@@ -54,7 +50,7 @@ const showResult = (result) => {
 }
 
 const bindKey = () => {
-    // TODO :: event bubleing
+    // TODO :: event bubbling
     window.addEventListener('keydown', (e) => {
         if (e.keyCode == 13 || e.keyCode == 187)
             clickEqual();
