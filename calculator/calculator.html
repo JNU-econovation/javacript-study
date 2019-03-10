@@ -1,8 +1,10 @@
+<!--ECONOVATION, ECE 151807 정회형. 2019.03.01-->
 <!DOCTYPE html>
 <html>
 <head>
     <title>자바스크립트 계산기!</title>
-    <script type="text/javascript" src="calculator.js"></script>
+    <script type="text/javascript" src="key-input.js"></script>
+    <script type="text/javascript" src="calculate.js"></script>
     <link rel="stylesheet" href="calculator.css" type="text/css">
 </head>
 
@@ -10,48 +12,43 @@
     <table border="3">
         <tr>
             <td colspan="4">
-                <b>자바스크립트 계산기!</b>
+             <b>자바스크립트 계산기!</b>
             </td>
         </tr>
         <tr>
             <td colspan="4">
-                <input type="text" id="input">
+                <input type="text" id="display">
             </td>
         </tr>
         <tr>
-            <td colspan="4">
-                =<input type="text" id="answer">
-            </td>
+            <td data-key="7" onclick="putNumber(7)">7</td>
+            <td data-key="8" onclick="putNumber(8)">8</td>
+            <td data-key="9" onclick="putNumber(9)">9</td>
+            <td data-key="*" onclick="putOperand('*')">×</td>
         </tr>
         <tr>
-            <td onclick="charIn(7)">7</td>
-            <td onclick="charIn(8)">8</td>
-            <td onclick="charIn(9)">9</td>
-            <td onclick="charIn('*')">×</td>
+            <td data-key="4" onclick="putNumber(4)">4</td>
+            <td data-key="5" onclick="putNumber(5)">5</td>
+            <td data-key="6" onclick="putNumber(6)">6</td>
+            <td data-key="/" onclick="putOperand('/')">÷</td>
         </tr>
         <tr>
-            <td onclick="charIn(4)">4</td>
-            <td onclick="charIn(5)">5</td>
-            <td onclick="charIn(6)">6</td>
-            <td onclick="charIn('/')">÷</td>
+            <td data-key="1" onclick="putNumber(1)">1</td>
+            <td data-key="2" onclick="putNumber(2)">2</td>
+            <td data-key="3" onclick="putNumber(3)">3</td>
+            <td data-key="+" onclick="putOperand('+')">+</td>
         </tr>
         <tr>
-            <td onclick="charIn(1)">1</td>
-            <td onclick="charIn(2)">2</td>
-            <td onclick="charIn(3)">3</td>
-            <td onclick="charIn('+')">+</td>
-        </tr>
-        <tr>
-            <td onclick="charIn(0)">0</td>
-            <td onclick="charIn('.')">.</td>
-	    <td onclick="resetInput()">C/E</td>
-            <td onclick="charIn('-')">-</td>
+            <td data-key="0" onclick="putNumber(0)">0</td>
+            <td data-key="." onclick="putNumber('.')">.</td>
+	        <td data-key="Escape" onclick="resetDisplay()">C/E</td>
+            <td data-key="-" onclick="putOperand('-')">-</td>
         </tr>
         <tr>
             <td colspan="2">
                 http://h2f.kr
-	    </td>
-	    <td colspan='2' onclick="calculate()">=</td>
+	        </td>
+	        <td data-key="Enter" colspan='2' onclick="evaluateCal()">=</td>
         </tr>
     </table>
 </body>
