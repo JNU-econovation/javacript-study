@@ -2,8 +2,6 @@ function startCal(){
     var resultValue = categorize(input);
 }
 
-
-
 function categorize(input){
     var input = documnet.getElementById('input');
     var numbers = input.split(/[\*\/\+\-]/);
@@ -14,6 +12,13 @@ function categorize(input){
 
     return resultValue;
 
+}
+
+function checkLength(numbers) {
+    if(numbers.length > 2) {
+        return false;
+    }
+    return true;
 }
 
 function plus(leftNumber, rightNumber){
@@ -43,8 +48,6 @@ function checkSymbol(leftNumber, rightNumber, symbol){
         case '/':
             return divide(leftNumber, rightNumber);
     }
-
-    
 }
 
 function reset() {
