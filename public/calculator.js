@@ -4,7 +4,8 @@ function getInput() {
 }
 
 function run() {
-    var regExp = /[0-9+/*-]/;
+    var regExp = /[0-9]/;
+    var operExp = /[+/*-]/;
     window.addEventListener('keydown', function(element){
 
         if(element.keyCode == 13) {
@@ -18,15 +19,12 @@ function run() {
         if(element.key.match(regExp)){
             getInput().value += element.key;
         }
+
+        if(element.key.match(operExp)){
+            
+        }
+
     });
-}
-
-function input(element) {
-    getInput().value += element.innerHTML;
-}
-
-function clearAll() {
-    getInput().value = '';
 }
 
 function calculate() {
@@ -42,9 +40,6 @@ function check(splited) {
     return true;
 }
 
-function dealError() {
-    alert("error");
-}
 
 function operator(operator) {
     var input = operator.value;
@@ -71,4 +66,17 @@ function selectOperator(operator) {
         '*' : function (first, second) {return first * second}
     }
     return calculation[operator];
+}
+
+
+function dealError() {
+    alert("error");
+}
+
+function input(element) {
+    getInput().value += element.innerHTML;
+}
+
+function clearAll() {
+    getInput().value = '';
 }
