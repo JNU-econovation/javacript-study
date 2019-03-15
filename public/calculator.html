@@ -10,7 +10,7 @@
     <script src = "calculator.js"></script>
 </head>
 
-<body onload="run()">
+<body onload="initInput()">
     <table>
         <tr>
             <td colspan = "4">
@@ -18,30 +18,31 @@
             </td>
         </tr>
         <tr>
-            <td onclick= input(this)>7</td>
-            <td onclick= input(this)>8</td>
-            <td onclick= input(this)>9</td>
-            <td onclick= operator(this)>+</td>
+            <td onclick= numberClicked(7)>7</td>
+            <td onclick= numberClicked(8)>8</td>
+            <td onclick= numberClicked(9)>9</td>
+            <td onclick= "operClicked('+')">+</td>
         </tr>
         <tr>
-            <td onclick= input(this)>4</td>
-            <td onclick= input(this)>5</td>
-            <td onclick= input(this)>6</td>
-            <td onclick= operator(this)>-</td>
+            <td onclick= numberClicked(4)>4</td>
+            <td onclick= numberClicked(5)>5</td>
+            <td onclick= numberClicked(6)>6</td>
+            <td onclick= "operClicked('-')">-</td>
         </tr>
         <tr>
-            <td onclick= input(this)>1</td>
-            <td onclick= input(this)>2</td>
-            <td onclick= input(this)>3</td>
-            <td onclick= operator(this)>*</td>
+            <td onclick= numberClicked(1)>1</td>
+            <td onclick= numberClicked(2)>2</td>
+            <td onclick= numberClicked(3)>3</td>
+            <td onclick= "operClicked('*')">*</td>
         </tr>
         <tr>
-            <td colspan="3" onclick= input(this)>0</td>
-            <td onclick= operator(this)>/</td>
+            <td colspan="2" onclick= numberClicked(0)>0</td>
+            <td onclick= "dotClicked('.')">.</td>
+            <td onclick= "operClicked('/')">/</td>
         </tr>
         <tr>
-            <td colspan="3" onclick= clearAll()>clear</td>
-            <td onclick= calculate(this)>=</td>
+            <td colspan="3" onclick= clearClicked(this)>clear</td>
+            <td onclick= submitClicked(this)>=</td>
         </tr>
     </table>
 </body>
