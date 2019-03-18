@@ -1,35 +1,40 @@
-var queue = [];
-var typing = false;
-var dotUsed = false;
-var queueSize = 3;
-var numExp = /[0-9]/;
-var operExp = /[+/*-]/;
+let queue = [];
+let typing = false;
+let dotUsed = false;
+const queueSize = 3;
+const numExp = /[0-9]/;
+const operExp = /[+/*-]/;
     
 function getInput() {
     return document.getElementById("input");
 }
 
-function initInput() {
+function setupInput() {
     getInput().value = 0;
     typing = true;
     dotUsed = false;
     queue = [];
+    addKeyEvent();
 }
 
-window.addEventListener('keydown', function(element){
-    if(element.keyCode == 13) { submitClicked(element.key); }
-    if(element.keyCode == 8){ clearClicked(element.key); }
-    if(element.key.match(numExp)){ numberClicked(element.key); }
-    if(element.key.match(operExp)){ operClicked(element.key); }
-    if(element.keyCode == 190){ dotClicked(element.key); }
-});
+function addKeyEvent() {
+    window.addEventListener('keydown', handleKeydown);
+}
 
-function clearClicked(element) {
+function handleKeydown(event) {
+    if(event.key.match(operExp)){ clickOperator(event.key); }
+
+    const key = document.querySelector(`td[data-key="${event.keyCode}"]`);
+	if(!key) return;
+    key.onclick();
+}
+
+function clickClear(element) {
     clearAll();
     initInput();
 }
 
-function submitClicked(element) {
+function clickSubmit(element) {
     queue.push(getInput().value);
     calculate();
     typing = true;
@@ -37,14 +42,13 @@ function submitClicked(element) {
     queue = [];
 }
 
-function numberClicked(element) {
-    console.log(element);
+function clickNumber(element) {
     if(typing) clearAll();
     typing = false;
     getInput().value += element;
 }
 
-function operClicked(element) {
+function clickOperator(element) {
     typing = true;
     dotUsed = false;
     queue.push(getInput().value);
@@ -54,7 +58,7 @@ function operClicked(element) {
     queue.push(element);
 }
 
-function dotClicked(element) {
+function clickDot(element) {
     if(dotUsed) {
         return;
     }
@@ -63,17 +67,12 @@ function dotClicked(element) {
     getInput().value += element;
 }
 
-function input(element) {
-    getInput().value += element.innerHTML;
-}
-
 function clearAll() {
     getInput().value = '';
 }
 
 function calculate() {
     var result = operator();
-    console.log(result)
     getInput().value = result;
 }
 
@@ -83,12 +82,10 @@ function dealError() {
 }
 
 function operator() {
-    var first = queue.pop();
-    var operator = queue.pop();
-    var second = queue.pop();
-    console.log(second, operator, first);
-
-    var result = selectOperator(operator)(parseFloat(second), parseFloat(first));
+    const first = queue.pop();
+    const operator = queue.pop();
+    const second = queue.pop();
+    const result = selectOperator(operator)(parseFloat(second), parseFloat(first));
     
     if(isFinite(result)){
         queue.push(result);

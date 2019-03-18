@@ -10,7 +10,7 @@
     <script src = "calculator.js"></script>
 </head>
 
-<body onload="initInput()">
+<body onload="setupInput()">
     <table>
         <tr>
             <td colspan = "4">
@@ -18,31 +18,31 @@
             </td>
         </tr>
         <tr>
-            <td onclick= numberClicked(7)>7</td>
-            <td onclick= numberClicked(8)>8</td>
-            <td onclick= numberClicked(9)>9</td>
-            <td onclick= "operClicked('+')">+</td>
+            <td onclick= clickNumber(7) data-key="55">7</td>
+            <td onclick= clickNumber(8) data-key="56">8</td>
+            <td onclick= clickNumber(9) data-key="57">9</td>
+            <td onclick= "clickOperator('+')">+</td>
         </tr>
         <tr>
-            <td onclick= numberClicked(4)>4</td>
-            <td onclick= numberClicked(5)>5</td>
-            <td onclick= numberClicked(6)>6</td>
-            <td onclick= "operClicked('-')">-</td>
+            <td onclick= clickNumber(4) data-key="52">4</td>
+            <td onclick= clickNumber(5) data-key="53">5</td>
+            <td onclick= clickNumber(6) data-key="54">6</td>
+            <td onclick= "clickOperator('-')">-</td>
         </tr>
         <tr>
-            <td onclick= numberClicked(1)>1</td>
-            <td onclick= numberClicked(2)>2</td>
-            <td onclick= numberClicked(3)>3</td>
-            <td onclick= "operClicked('*')">*</td>
+            <td onclick= clickNumber(1) data-key="49">1</td>
+            <td onclick= clickNumber(2) data-key="50">2</td>
+            <td onclick= clickNumber(3) data-key="51">3</td>
+            <td onclick= "clickOperator('*')">*</td>
         </tr>
         <tr>
-            <td colspan="2" onclick= numberClicked(0)>0</td>
-            <td onclick= "dotClicked('.')">.</td>
-            <td onclick= "operClicked('/')">/</td>
+            <td colspan="2" onclick= clickNumber(0) data-key="48">0</td>
+            <td onclick= "clickDot('.')">.</td>
+            <td onclick= "clickOperator('/')"></td>/</td>
         </tr>
         <tr>
-            <td colspan="3" onclick= clearClicked(this)>clear</td>
-            <td onclick= submitClicked(this)>=</td>
+            <td colspan="3" onclick= clickClear(this)>clear</td>
+            <td onclick= clickSubmit(this)>=</td>
         </tr>
     </table>
 </body>
