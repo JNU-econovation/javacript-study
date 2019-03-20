@@ -26,17 +26,17 @@ html {
     font-size: 200px;
 }
 
-.stop_watch {
+.stopwatch {
     text-align: center;
     color: white;
     font-size: 40px;
 }
 
-.stop_watch_time {
+.stopwatch_time {
     font-size: 200px;
 }
 
-.stop_watch_ms {
+.stopwatch_ms {
     font-size: 100px;
 }
 
@@ -54,6 +54,8 @@ html {
     height: 2rem;
     background-color: white;
     padding: 1rem;
+
+    cursor: pointer;
 }
 
 .btn_title {

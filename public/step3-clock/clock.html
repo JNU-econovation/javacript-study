@@ -3,6 +3,7 @@
 <head>
     <title>clock-step3</title>
     <script type="text/javascript" src="clock.js"></script>
+    <script type="text/javascript" src="clock.stopwatch.js"></script>
     <link rel="stylesheet" href="clock.css" type="text/css">
 </head>
 <body>
@@ -13,17 +14,17 @@
     <span class="clock_time">00:00:00</span>
   </div>
   
-  <div class="stop_watch">
+  <div class="stopwatch">
     <div>stop watch</div>
-    <span class="stop_watch_time">00:00</span>
-    <span class="stop_watch_ms">.00</span>
+    <span class="stopwatch_time">00:00</span>
+    <span class="stopwatch_ms">.000</span>
   </div>
 
   <div class="btn_area">
-    <span class="button" id="reset">
+    <span class="button" id="reset" onclick="clickResetButton()">
       <span class="btn_title"><strong>RESET</strong></span>
     </span>
-    <span class="button" id="startOrPause">
+    <span class="button" id="startOrPause" onclick="clickStartOrPauseButton()">
       <span class="btn_title"><strong>START</strong></span>
     </span>  
   </div>

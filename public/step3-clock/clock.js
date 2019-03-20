@@ -4,16 +4,30 @@ function $(selector) {
 
 function setTime() {
     const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
-    const secondsFormat = function() {
-        if (seconds < 10) { return "0" + seconds.toString(); }
-        return seconds.toString();
-    }
-    var result = hours.toString() + ":" + minutes.toString() + ":" + secondsFormat();
+    const hoursFormat = changeTimeFormatOf(now.getHours(), 2);
+    const minutesFormat = changeTimeFormatOf(now.getMinutes(), 2);
+    const secondsFormat = changeTimeFormatOf(now.getSeconds(), 2);
+    $(".clock_time").innerHTML = hoursFormat + ":" + minutesFormat + ":" + secondsFormat;
+}
 
-    $(".clock_time").innerHTML = result;
+// function changeTimeFormatOf(time) {
+//     if (time < 10) { return "0" + time.toString(); }
+//         return time.toString();
+// }
+
+function changeTimeFormatOf(time, digits) {
+    if(digits == 2) {
+        if (time < 10) { return "0" + time.toString(); }
+        return time.toString();
+    }
+
+    if(digits == 3) {
+        if(time >= 10 && time < 100) { return ".0" + time.toString(); }
+        if(time < 10) { return ".00" + time.toString(); }
+        return "." + time.toString();
+    }
+
+    
 }
 
 setInterval(setTime, 1000);
