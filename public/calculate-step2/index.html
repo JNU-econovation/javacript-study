@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./static/css/style.css" type="text/css" />
+        <script type="text/javascript" src="./static/js/queue.js"></script>
+        <script type="text/javascript" src="./static/js/calculator.js"></script>
+        <script type="text/javascript" src="./static/js/context.js"></script>
+        <script type="text/javascript" src="./static/js/input.js"></script>
+        <script type="text/javascript" src="./static/js/utils.js"></script>
+    </head>
+    <body onload="initialize()">
+        <main>
+            <div class="calculator">
+                <div class="result-wrapper">
+                    <div class="result" id="expression"></div>
+                </div>
+                <div class="expression-wrapper">
+                    <div type="input" id="input"></div>
+                </div>
+                <div class="clickable-wrapper">
+                    <div class="clickable-line">
+                        <div class="clickable" onClick="clickNumber(7)">7</div>
+                        <div class="clickable" onClick="clickNumber(8)">8</div>
+                        <div class="clickable" onClick="clickNumber(9)">9</div>
+                        <div class="clickable" onClick="clickOperator('+')">+</div>
+                    </div>
+                    <div class="clickable-line">
+                        <div class="clickable" onClick="clickNumber(4)">4</div>
+                        <div class="clickable" onClick="clickNumber(5)">5</div>
+                        <div class="clickable" onClick="clickNumber(6)">6</div> 
+                        <div class="clickable" onClick="clickOperator('-')">-</div>
+                    </div>
+                    <div class="clickable-line">
+                        <div class="clickable" onClick="clickNumber(1)">1</div>
+                        <div class="clickable" onClick="clickNumber(2)">2</div>
+                        <div class="clickable" onClick="clickNumber(3)">3</div>    
+                        <div class="clickable" onClick="clickOperator('*')">*</div>
+                    </div>
+                    <div class="clickable-line">
+                        <div class="clickable" onClick="clickNumber('.')" > . </div>
+                        <div class="clickable" onClick="clickNumber(0)">0</div>
+                        <div class="clickable" > </div>
+                        <div class="clickable" onClick="clickOperator('/')">/</div>
+                    </div>
+                    <div class="clickable-line">
+                        <div class="clickable" onClick="clickClear()" >CE</div>
+                        <div class="clickable" onClick="popExpressionView()">B</div>
+                        <div class="clickable" onClick="clickEqual()">= </div>
+                        <div class="clickable" onClick="clickOperator('%')">%</div>
+                    </div>
+                </div>    
+            </div>
+        </main>
+    </body>
+    
+</html>
