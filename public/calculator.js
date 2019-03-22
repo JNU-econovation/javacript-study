@@ -4,13 +4,11 @@ let dotUsed = false;
 const queueSize = 3;
 const numExp = /[0-9]/;
 const operExp = /[+/*-]/;
-    
-function getInput() {
-    return document.getElementById("input");
-}
+var inputField;
 
 function setupInput() {
-    getInput().value = 0;
+    inputField = document.getElementById('input');
+    inputField.value = 0;
     typing = true;
     dotUsed = false;
     queue = [];
@@ -29,13 +27,13 @@ function handleKeydown(event) {
     key.onclick();
 }
 
-function clickClear(element) {
+function clickClear() {
     clearAll();
-    initInput();
+    setupInput();
 }
 
-function clickSubmit(element) {
-    queue.push(getInput().value);
+function clickSubmit() {
+    queue.push(inputField.value);
     calculate();
     typing = true;
     dotUsed = false;
@@ -45,13 +43,13 @@ function clickSubmit(element) {
 function clickNumber(element) {
     if(typing) clearAll();
     typing = false;
-    getInput().value += element;
+    inputField.value += element;
 }
 
 function clickOperator(element) {
     typing = true;
     dotUsed = false;
-    queue.push(getInput().value);
+    queue.push(inputField.value);
     if(queue.length == queueSize) {
         calculate();
     }
@@ -64,21 +62,21 @@ function clickDot(element) {
     }
     typing = false;
     dotUsed = true;
-    getInput().value += element;
+    inputField.value += element;
 }
 
 function clearAll() {
-    getInput().value = '';
+    inputField.value = '';
 }
 
 function calculate() {
     var result = operator();
-    getInput().value = result;
+    inputField.value = result;
 }
 
 function dealError() {
     alert("error");
-    initInput();
+    setupInput();
 }
 
 function operator() {
