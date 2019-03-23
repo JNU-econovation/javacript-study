@@ -32,10 +32,10 @@ function setTime() {
 }
 
 function printStopwatch() {
-    const minutesFormat = changeTimeFormatOf(Stopwatch.minutes, 2);
-    const secondsFormat = changeTimeFormatOf(Stopwatch.seconds, 2);
+    const minutesFormat = changeTimeFormatOf(Stopwatch.minutes, DIGIT_2);
+    const secondsFormat = changeTimeFormatOf(Stopwatch.seconds, DIGIT_2);
     $(".stopwatch_time").innerHTML = minutesFormat + ":" + secondsFormat;
-    $(".stopwatch_ms").innerHTML = changeTimeFormatOf(Stopwatch.milliseconds, 3);
+    $(".stopwatch_ms").innerHTML = changeTimeFormatOf(Stopwatch.milliseconds, DIGIT_3);
 }
 
 function initializeStopwatch() {
@@ -61,15 +61,17 @@ function clickStartOrPauseButton() {
 
 function clickResetButton() {
     StateOfStopWatch = STOPPED;
+    $("#startOrPause").innerHTML = "START"
     initializeStopwatch();
     printStopwatch();
 }
 
 function start() {
     StateOfStopWatch = STARTED;
-    console.log(StateOfStopWatch);
+    $("#startOrPause").innerHTML = "PAUSE"
 }
 
 function pause() {
     StateOfStopWatch = PAUSED;
+    $("#startOrPause").innerHTML = "START"
 }
