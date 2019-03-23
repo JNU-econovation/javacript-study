@@ -10,7 +10,7 @@
     <script src = "calculator.js"></script>
 </head>
 
-<body onload="run()">
+<body onload="setupInput()">
     <table>
         <tr>
             <td colspan = "4">
@@ -18,30 +18,31 @@
             </td>
         </tr>
         <tr>
-            <td onclick= input(this)>7</td>
-            <td onclick= input(this)>8</td>
-            <td onclick= input(this)>9</td>
-            <td onclick= input(this)>+</td>
+            <td onclick= clickNumber(7) data-key="55">7</td>
+            <td onclick= clickNumber(8) data-key="56">8</td>
+            <td onclick= clickNumber(9) data-key="57">9</td>
+            <td onclick= "clickOperator('+')">+</td>
         </tr>
         <tr>
-            <td onclick= input(this)>4</td>
-            <td onclick= input(this)>5</td>
-            <td onclick= input(this)>6</td>
-            <td onclick= input(this)>-</td>
+            <td onclick= clickNumber(4) data-key="52">4</td>
+            <td onclick= clickNumber(5) data-key="53">5</td>
+            <td onclick= clickNumber(6) data-key="54">6</td>
+            <td onclick= "clickOperator('-')">-</td>
         </tr>
         <tr>
-            <td onclick= input(this)>1</td>
-            <td onclick= input(this)>2</td>
-            <td onclick= input(this)>3</td>
-            <td onclick= input(this)>*</td>
+            <td onclick= clickNumber(1) data-key="49">1</td>
+            <td onclick= clickNumber(2) data-key="50">2</td>
+            <td onclick= clickNumber(3) data-key="51">3</td>
+            <td onclick= "clickOperator('*')">*</td>
         </tr>
         <tr>
-            <td colspan="3" onclick= input(this)>0</td>
-            <td onclick= input(this)>/</td>
+            <td colspan="2" onclick= clickNumber(0) data-key="48">0</td>
+            <td onclick= "clickDot('.')" data-key="190">.</td>
+            <td onclick= "clickOperator('/')">/</td>
         </tr>
         <tr>
-            <td colspan="3" onclick= clearAll()>clear</td>
-            <td onclick= calculate(this)>=</td>
+            <td colspan="3" onclick= clickClear() data-key="8">clear</td>
+            <td onclick= clickSubmit() data-key="13">=</td>
         </tr>
     </table>
 </body>

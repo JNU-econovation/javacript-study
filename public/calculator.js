@@ -1,66 +1,97 @@
+let queue = [];
+let typing = false;
+let dotUsed = false;
+const queueSize = 3;
+const numExp = /[0-9]/;
+const operExp = /[+/*-]/;
+var inputField;
 
-function getInput() {
-    return document.getElementById("input");
+function setupInput() {
+    inputField = document.getElementById('input');
+    inputField.value = 0;
+    typing = true;
+    dotUsed = false;
+    queue = [];
+    addKeyEvent();
 }
 
-function run() {
-    var regExp = /[0-9+/*-]/;
-    window.addEventListener('keydown', function(element){
-
-        if(element.keyCode == 13) {
-            calculate();
-        }
-
-        if(element.keyCode == 8){
-            clearAll();
-        }
-
-        if(element.key.match(regExp)){
-            getInput().value += element.key;
-        }
-    });
+function addKeyEvent() {
+    window.addEventListener('keydown', handleKeydown);
 }
 
-function input(element) {
-    getInput().value += element.innerHTML;
+function handleKeydown(event) {
+    if(event.key.match(operExp)){ clickOperator(event.key); }
+
+    const key = document.querySelector(`td[data-key="${event.keyCode}"]`);
+	if(!key) return;
+    key.onclick();
+}
+
+function clickClear() {
+    clearAll();
+    setupInput();
+}
+
+function clickSubmit() {
+    queue.push(inputField.value);
+    calculate();
+    typing = true;
+    dotUsed = false;
+    queue = [];
+}
+
+function clickNumber(element) {
+    if(typing) clearAll();
+    typing = false;
+    inputField.value += element;
+}
+
+function clickOperator(element) {
+    typing = true;
+    dotUsed = false;
+    queue.push(inputField.value);
+    if(queue.length == queueSize) {
+        calculate();
+    }
+    queue.push(element);
+}
+
+function clickDot(element) {
+    if(dotUsed) {
+        return;
+    }
+    typing = false;
+    dotUsed = true;
+    inputField.value += element;
 }
 
 function clearAll() {
-    getInput().value = '';
+    inputField.value = '';
 }
 
 function calculate() {
-    var result = operator(getInput());
-    getInput().value = result;
-}
-
-function check(splited) {
-    if(splited.length > 2){
-        return false;
-    }
-
-    return true;
+    var result = operator();
+    inputField.value = result;
 }
 
 function dealError() {
     alert("error");
+    setupInput();
 }
 
-function operator(operator) {
-    var input = operator.value;
-    var regExp = /[+*/-]/;
+function operator() {
+    const first = queue.pop();
+    const operator = queue.pop();
+    const second = queue.pop();
+    const result = selectOperator(operator)(parseFloat(second), parseFloat(first));
     
-    var splited = String(input).split(regExp);
-    var operator = String(input).match(regExp);
-    var result = selectOperator(operator)(parseFloat(splited[0]), parseFloat(splited[1]));
-
-    if(check(result) && isFinite(result)){
+    if(isFinite(result)){
+        queue.push(result);
         return result;
     }
     
     dealError();
     return "";
-
 }
 
 function selectOperator(operator) {
