@@ -12,26 +12,22 @@ var Stopwatch = {
 setInterval(setTime, 1);
 
 function setTime() {
-    console.log(StateOfStopWatch);
     if(StateOfStopWatch != STARTED) { return; }
-
     Stopwatch.milliseconds++;
-    console.log(Stopwatch.milliseconds);
-
-    if(Stopwatch.milliseconds >= 1000) {
-        Stopwatch.milliseconds -= 1000;
-        Stopwatch.seconds++;
-    }
 
     if(Stopwatch.seconds >= 60) {
         Stopwatch.seconds -= 60;
         Stopwatch.minutes++;
     }
 
-    printStopwatch();
+    if(Stopwatch.milliseconds >= 1000) {
+        Stopwatch.milliseconds -= 1000;
+        Stopwatch.seconds++;
+    }
+    updateStopwatchDisplay();
 }
 
-function printStopwatch() {
+function updateStopwatchDisplay() {
     const minutesFormat = changeTimeFormatOf(Stopwatch.minutes, DIGIT_2);
     const secondsFormat = changeTimeFormatOf(Stopwatch.seconds, DIGIT_2);
     $(".stopwatch_time").innerHTML = minutesFormat + ":" + secondsFormat;
@@ -63,7 +59,7 @@ function clickResetButton() {
     StateOfStopWatch = STOPPED;
     $("#startOrPause").innerHTML = "START"
     initializeStopwatch();
-    printStopwatch();
+    updateStopwatchDisplay();
 }
 
 function start() {
