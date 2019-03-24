@@ -1,7 +1,7 @@
 const STOPPED = 0;
 const STARTED = 1;
 const PAUSED = 2;
-let StateOfStopWatch = STOPPED;
+let stateOfStopWatch = STOPPED;
 
 var Stopwatch = {
     minutes : 0,
@@ -12,19 +12,27 @@ var Stopwatch = {
 setInterval(setTime, 1);
 
 function setTime() {
-    if(StateOfStopWatch != STARTED) { return; }
+    if(stateOfStopWatch != STARTED) { return; }
     Stopwatch.milliseconds++;
 
     if(Stopwatch.seconds >= 60) {
-        Stopwatch.seconds -= 60;
-        Stopwatch.minutes++;
+        _increaseMinute();
     }
-
     if(Stopwatch.milliseconds >= 1000) {
-        Stopwatch.milliseconds -= 1000;
-        Stopwatch.seconds++;
+        _increaseSecond();
     }
+    
     updateStopwatchDisplay();
+}
+
+function _increaseSecond() {
+    Stopwatch.milliseconds -= 1000;
+    Stopwatch.seconds++;
+}
+
+function _increaseMinute() {
+    Stopwatch.seconds -= 60;
+    Stopwatch.minutes++;
 }
 
 function updateStopwatchDisplay() {
@@ -41,7 +49,7 @@ function initializeStopwatch() {
 }
 
 function clickStartOrPauseButton() {
-    switch (StateOfStopWatch) {
+    switch (stateOfStopWatch) {
         case STOPPED :
             initializeStopwatch();
             start();
@@ -56,18 +64,18 @@ function clickStartOrPauseButton() {
 }
 
 function clickResetButton() {
-    StateOfStopWatch = STOPPED;
+    stateOfStopWatch = STOPPED;
     $("#startOrPause").innerHTML = "START"
     initializeStopwatch();
     updateStopwatchDisplay();
 }
 
 function start() {
-    StateOfStopWatch = STARTED;
+    stateOfStopWatch = STARTED;
     $("#startOrPause").innerHTML = "PAUSE"
 }
 
 function pause() {
-    StateOfStopWatch = PAUSED;
+    stateOfStopWatch = PAUSED;
     $("#startOrPause").innerHTML = "START"
 }
