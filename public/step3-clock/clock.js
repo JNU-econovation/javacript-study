@@ -7,10 +7,14 @@ function $(selector) {
 
 function setTime() {
     const now = new Date();
-    const hoursFormat = changeTimeFormatOf(now.getHours(), DIGIT_2);
+
+    const timeSectionFormat = now.getHours() >= 12 ? "PM" : "AM";
+    const hours = now.getHours() > 12 ? now.getHours() - 12 : now.getHours();
+    const hoursFormat = changeTimeFormatOf(hours, DIGIT_2);
     const minutesFormat = changeTimeFormatOf(now.getMinutes(), DIGIT_2);
     const secondsFormat = changeTimeFormatOf(now.getSeconds(), DIGIT_2);
     $(".clock_time").innerHTML = hoursFormat + ":" + minutesFormat + ":" + secondsFormat;
+    $(".time_section").innerHTML = " " + timeSectionFormat;
 }
 
 function changeTimeFormatOf(time, digits) {

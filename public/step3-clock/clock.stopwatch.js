@@ -21,8 +21,8 @@ function setTime() {
     if(Stopwatch.milliseconds >= 1000) {
         _increaseSecond();
     }
-    
-    updateStopwatchDisplay();
+
+    _updateStopwatchDisplay();
 }
 
 function _increaseSecond() {
@@ -35,7 +35,7 @@ function _increaseMinute() {
     Stopwatch.minutes++;
 }
 
-function updateStopwatchDisplay() {
+function _updateStopwatchDisplay() {
     const minutesFormat = changeTimeFormatOf(Stopwatch.minutes, DIGIT_2);
     const secondsFormat = changeTimeFormatOf(Stopwatch.seconds, DIGIT_2);
     $(".stopwatch_time").innerHTML = minutesFormat + ":" + secondsFormat;
@@ -67,7 +67,7 @@ function clickResetButton() {
     stateOfStopWatch = STOPPED;
     $("#startOrPause").innerHTML = "START"
     initializeStopwatch();
-    updateStopwatchDisplay();
+    _updateStopwatchDisplay();
 }
 
 function start() {

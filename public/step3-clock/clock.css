@@ -22,6 +22,10 @@ html {
     font-size: 200px;
 }
 
+.time_section {
+    font-size: 100px;
+}
+
 .stopwatch {
     text-align: center;
     color: white;
