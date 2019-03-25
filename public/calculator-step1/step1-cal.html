@@ -6,14 +6,13 @@
   <meta charset="UTF-8">
   <title>멋진 계산기</title>
 </head>
-<body>
+<body onload= "handle()">
 <div align="center">
   <h3>멋진 계산기</h3>
-  <form action="" name="cal">
   <table border="1">
     <tr>
       <td colspan="4">
-        <input type="text" id="window">
+        <input type="text" id="blank">
       </td>
     </tr>
     <tr>
@@ -46,10 +45,9 @@
     </tr>
     <tr>
       <td onclick="insert(0)" colspan="3">0</td>
-      <td onclick="calculator()">=</td>
+      <td onclick="calculate()">=</td>
     </tr>
   </table>
-</form>
 </div>
 </body>
 </html>

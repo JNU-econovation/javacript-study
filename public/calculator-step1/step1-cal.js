@@ -1,83 +1,67 @@
+function handle() {
+  const isClicked = true;
+  const numRex = /['0-9']/;
+  const operatorRex = /[%*/+-]/;
+  window.addEventListener('keydown', function(event){
+    if(event.key.match(numRex)){
+      isClicked = false;
+      document.getElementById("blank").value += event.key;
+    }
+    if(event.key.match(operatorRex)){
+      if(isClicked){
+        return;
+      }
+      document.getElementById("blank").value += event.key;
+    }
+    if(element.keyCode == 8){
+      reset();
+    }
+    if(element.keyCode == 13){
+      calculate();
+    }
+  });
+}
 function insert(inputValue){
-  document.getElementById("window").value += inputValue;
+  document.getElementById("blank").value += inputValue;
 }
-
-function typeError(){
-    alert("에러입니다.");
-}
-
 function reset(){
-  document.getElementById("window").value = "";
+  document.getElementById("blank").value = "";
   document.getElementById("result").value = "";
   console.log("clear");
 }
-
-function check(inputValue, left, right){
+function error(){
+  alert("에러입니다.");
+}
+function check(inputValue, leftnum, rightnum){
     var checkSign = true;
-    if((/[%*/+-]/.exec(inputValue.value))!=null && (left ==""|| right =="") || isNaN(left)){
+    if((/[%*/+-]/.exec(inputValue.value))!=null || (leftnum ==""|| rightnum =="") || isNaN(leftnum)){
         checkSign = false;
-    }return checkSign;
-}
-
-function save(inputValue){
-  var windowMath = /[%*/+-]/g;
-  var windowArea = /\d+/g;
-  var left = parseFloat(inputValue.match(windowArea)[0]);
-  var right = parseFloat(inputValue.match(windowArea)[1]);
-  var sign = inputValue.match(windowMath)[0];
-
-    if(check(inputValue, left, right) == false || isNaN(left)){
-        typeError();
     }
-    
-  var useful = {
-    'left' : left,
-    'right' : right,
-    'sign' : sign
+    return checkSign;
+}
+function operator(inputValue){
+  var blankMath = /[%*/+-]/g;
+  var blankArea = /\d+/g;
+  var leftnum = parseFloat(inputValue.match(blankArea)[0]);
+  var rightnum = parseFloat(inputValue.match(blankArea)[1]);
+  var sign = inputValue.match(blankMath);
+  var result = selectOperator(sign)(leftnum,rightnum);
+}
+function selectOperator(sign){
+  var result = {
+    '+' : function add(leftnum,rightnum){ return leftnum+rightnum; },
+    '-' : function substruct(leftnum,rightnum){ return leftnum-rightnum; },
+    '*' : function multifly(leftnum,rightnum){ return leftnum*rightnum; },
+    '/' : function divide(leftnum,rightnum){ return leftnum/rightnum; },
+    '%' : function surplus(leftnum,rightnum){ return leftnum%rightnum; }
   }
-  return useful;
+  return result[sign];
 }
-
-function add(left,right){
-  return left+right;
-}
-function minus(left,right){
-  return left-right;
-}
-function mul(left,right){
-  return left*right;
-}
-function div(left,right){
-  return left/right;
-}
-function surplus(left,right){
-  return left%right;
-}
-
-function calculator(){
-  var inputValue = document.getElementById("window").value;
-
-
-  console.log("calculator 실행");
-  console.log(inputValue);
-  var ResultLine = save(inputValue);
-  var resultValue = Math(ResultLine.left, ResultLine.right, ResultLine.sign);
+function calculate(){
+  var inputValue = document.getElementById("blank").value;
+  var resultLine = operator(inputValue);
+  var resultValue = selectOperator(resultLine.leftnum, resultLine.rightnum, resultLine.sign);
 
   document.getElementById("result").value = resultValue;
   return resultValue;
-}
-
-function Math(left, right, sign){
-  switch(sign) {
-    case '+':
-    return add(left, right);
-    case '-':
-    return minus(left, right);
-    case '*':
-    return mul(left, right);
-    case '/':
-    return div(left, right);
-    case '%':
-    return surplus(left, right);
-  }
 }
