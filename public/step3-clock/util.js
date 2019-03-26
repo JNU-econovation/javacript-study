@@ -2,6 +2,19 @@ function $(selector) {
     return document.querySelector(selector);
 }
 
+function changeTimeFormatOf(time, digits) {
+    if(digits == DIGIT_2) {
+        if (time < 10) { return "0" + time.toString(); }
+        return time.toString();
+    }
+    
+    if(digits == DIGIT_3) {
+        if(time >= 10 && time < 100) { return ".0" + time.toString(); }
+        if(time < 10) { return ".00" + time.toString(); }
+        return "." + time.toString();
+    }
+}
+
 function hanldeSwtichToClock() {
     _removeStopwatchTag()
     _addClockTag()

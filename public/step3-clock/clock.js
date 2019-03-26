@@ -9,21 +9,15 @@ function setTime() {
     const hoursFormat = changeTimeFormatOf(hours, DIGIT_2);
     const minutesFormat = changeTimeFormatOf(now.getMinutes(), DIGIT_2);
     const secondsFormat = changeTimeFormatOf(now.getSeconds(), DIGIT_2);
+
+    if(now.getMinutes() == 0 && now.getSeconds() == 0) { _alertTimeSharp(hours, timeSectionFormat) }
+
     $(".clock_time").innerHTML = hoursFormat + ":" + minutesFormat + ":" + secondsFormat;
     $(".time_section").innerHTML = " " + timeSectionFormat;
 }
 
-function changeTimeFormatOf(time, digits) {
-    if(digits == DIGIT_2) {
-        if (time < 10) { return "0" + time.toString(); }
-        return time.toString();
-    }
-    
-    if(digits == DIGIT_3) {
-        if(time >= 10 && time < 100) { return ".0" + time.toString(); }
-        if(time < 10) { return ".00" + time.toString(); }
-        return "." + time.toString();
-    }
+function _alertTimeSharp(hours, timeSelectionFormat){
+    alert(timeSelectionFormat + " " + hours + "시 입니다.")
 }
 
 setInterval(setTime, 1000);
