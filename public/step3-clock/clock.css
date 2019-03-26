@@ -10,6 +10,15 @@ html {
 
 .btn_area {
     text-align: center;
+    margin-top: 10rem;
+}
+
+.button#clock {
+    background-color: #5096ff;
+}
+
+.button#stopwatch {
+    background-color: #e448dc;
 }
 
 .stopwatch_btn_area {
@@ -20,6 +29,7 @@ html {
     text-align: center;
     color: white;
     font-size: 40px;
+    margin-top: 3rem;
 }
 
 .clock_time {
@@ -34,6 +44,7 @@ html {
     text-align: center;
     color: white;
     font-size: 40px;
+    margin-top: 3rem;
 }
 
 .stopwatch_time {
