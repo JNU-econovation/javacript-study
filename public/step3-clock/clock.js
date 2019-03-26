@@ -1,10 +1,6 @@
 const DIGIT_2 = 2;
 const DIGIT_3 = 3;
 
-function $(selector) {
-    return document.querySelector(selector);
-}
-
 function setTime() {
     const now = new Date();
 

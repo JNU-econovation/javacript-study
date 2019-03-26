@@ -1,8 +1,8 @@
 const STOPPED = 0;
 const STARTED = 1;
 const PAUSED = 2;
-let stateOfStopWatch = STOPPED;
 
+let stateOfStopWatch = STOPPED;
 var Stopwatch = {
     minutes : 0,
     seconds : 0,
@@ -42,7 +42,7 @@ function _updateStopwatchDisplay() {
     $(".stopwatch_ms").innerHTML = changeTimeFormatOf(Stopwatch.milliseconds, DIGIT_3);
 }
 
-function initializeStopwatch() {
+function _initializeStopwatch() {
     Stopwatch.minutes = 0;
     Stopwatch.seconds = 0;
     Stopwatch.milliseconds = 0;
@@ -51,7 +51,7 @@ function initializeStopwatch() {
 function clickStartOrPauseButton() {
     switch (stateOfStopWatch) {
         case STOPPED :
-            initializeStopwatch();
+            _initializeStopwatch();
             start();
             break;
         case STARTED :
@@ -66,7 +66,7 @@ function clickStartOrPauseButton() {
 function clickResetButton() {
     stateOfStopWatch = STOPPED;
     $("#startOrPause").innerHTML = "START"
-    initializeStopwatch();
+    _initializeStopwatch();
     _updateStopwatchDisplay();
 }
 
