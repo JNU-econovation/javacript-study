@@ -1,34 +1,40 @@
-var key = $('.key');
-key.hover(function(){
-    key.css('border','2px solid blue');
-}) 
+var secondDot = false;
 
-function clear() {
-    document.getElementById('input').value = "";
-    document.getElementById('result').value = "";
-}
-
-function enter(char) {
-    var input = document.getElementById('input');
-    input.value = input.value + char;
-}  
-
-window.addEventListener('keydown', writeNum);
-
-function writeNum(e) {
-    const key = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    key.enter();
+function keyDownEvent(){
+    window.addEventListener('keydown', writeNum);
 };
 
+function writeNum(e) {
+    const key = document.querySelector(`[data-key="${e.keyCode}"]`);
+    if(!key) return;
+    key.type(char);
+};
+
+function clear() {
+    getInput.value = "";
+    document.getElementById('result').value = "";
+};
+
+function type(char) {
+    var input = getInput;
+    input.value = input.value + char;
+}; 
+
+function getInput(){
+    document.getElementById('input');
+}
+
 function startCal(input){
-    var input = document.getElementById('input');
+    var input = getInput;
     var numbers = split.input(/[\*\/\+\-]/);
     var inputsymbol = /[+*/-]/g;
     var leftNum = parseFloat(numbers[0]);
     var symbol = input.match(inputsymbol);
     var rightNum = parseFloat(numbers[1]);
 
-    return checkSymbol
+    checkSplited(numbers);
+
+    return checkSymbol;
 };
 
 function checkSplited(numbers){
@@ -38,7 +44,14 @@ function checkSplited(numbers){
     return true;
 }
 
-function checkSymbol(symbol){
+function typeDot(char){
+    if(secondDot) {
+        return;
+    }
+    input.value = input.value + char;
+};
+
+function calculate(symbol){
     var calculation = {
         '/' : function(leftNum , rightNum) { return leftNum / rightNum},
         '*' : function(leftNum , rightNum) { return leftNum * rightNum},

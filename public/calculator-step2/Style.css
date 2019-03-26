@@ -6,3 +6,6 @@ input {
     text-align: right;
 }
 
+.key:hover {
+    border :  2px solid blue
+}
