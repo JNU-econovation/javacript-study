@@ -1,5 +1,5 @@
-var timeInput;
-const halfOfDay = 12;
+let timeInput;
+const half_of_day = 12;
 
 function initProject() {
     initClock();
@@ -35,11 +35,11 @@ function setSecond(second) {
 }
 
 function defineAmPm(hour) {
-    return hour > halfOfDay ? "PM" : "AM";
+    return hour > half_of_day ? "PM" : "AM";
 }
 
 function setHour(hour){
-    return hour > halfOfDay ? hour - halfOfDay : hour;
+    return hour > half_of_day ? hour - half_of_day : hour;
 }
 
 function setClock(amOrPm, hour, minute, second){
