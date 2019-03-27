@@ -10,22 +10,21 @@ function stop() {
 
 function start() {
     $("#startStop").innerHTML = "stop";
-    $("#reset").disabled = ""
-    doit()
-    $("#startStop").removeEventListener("click", start)
-    $("#startStop").addEventListener("click", stop)
+    $("#reset").disabled = "";
+    doit();
+    $("#startStop").removeEventListener("click", start);
+    $("#startStop").addEventListener("click", stop);
 }
 
 function doit() {
     timer = self.setInterval('increment()', 1000);
 }
 
-
 function increment() {
-    time++
-    changeSeconds(time)
-    changeMinutes(time)
-    changeHours(time)
+    time++;
+    changeSeconds(time);
+    changeMinutes(time);
+    changeHours(time);
 }
 
 function changeSeconds(time) {
@@ -58,6 +57,6 @@ function changeHours(time) {
 function reset() {
     time = 0;
     clearInterval(timer);
-    clear()
+    clear();
     $("#reset").disabled = "disabled";
 }

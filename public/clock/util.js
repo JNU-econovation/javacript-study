@@ -1,17 +1,17 @@
 function $(selector) {
-    return document.querySelector(selector)
+    return document.querySelector(selector);
 }
 
 function change() {
     if ($("#changingState").innerHTML == "stopwatch") {
-        $("#changingState").innerHTML = "clock"
-        $("#ampm").innerHTML = "ST"
+        $("#changingState").innerHTML = "clock";
+        $("#ampm").innerHTML = "ST";
         clear();
         addTag();
         setEvent();
         return;
     }
-    $("#changingState").innerHTML = "stopwatch"
+    $("#changingState").innerHTML = "stopwatch";
     removeTag();
 }
 
@@ -23,16 +23,16 @@ function clear() {
 
 function addTag() {
     const memo = `<button id="startStop">start</button>
-    <button id="reset" disabled = "disabled">reset</button>`
-    $("body").insertAdjacentHTML("beforeend", memo)
+    <button id="reset" disabled = "disabled">reset</button>`;
+    $("body").insertAdjacentHTML("beforeend", memo);
 }
 
 function removeTag() {
-    $("#startStop").remove()
-    $("#reset").remove()
+    $("#startStop").remove();
+    $("#reset").remove();
 }
 
 function setEvent() {
-    $("#startStop").addEventListener("click", start)
-    $("#reset").addEventListener("click", reset)
+    $("#startStop").addEventListener("click", start);
+    $("#reset").addEventListener("click", reset);
 }

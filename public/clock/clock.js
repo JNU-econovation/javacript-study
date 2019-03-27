@@ -3,7 +3,7 @@ function init() {
     setInterval(view, 1000)
 }
 
-function view() {
+function showClock() {
     if ($("#changingState").innerHTML == "stopwatch") {
         const now = new Date();
         setAMPM(now);
@@ -15,7 +15,7 @@ function view() {
 
 function setAMPM(now) {
     const hours = now.getHours();
-    if (hours % 24 < 12) {
+    if (hours < 12) {
         $("#ampm").innerHTML = "AM";
         return;
     }
@@ -24,30 +24,27 @@ function setAMPM(now) {
 
 function setSecond(now) {
     const seconds = now.getSeconds();
-    if (seconds % 60 < 10) {
-        $("#seconds").innerHTML = "0" + seconds % 60;
+    if (seconds < 10) {
+        $("#seconds").innerHTML = "0" + seconds;
         return;
     }
-    $("#seconds").innerHTML = seconds % 60;
+    $("#seconds").innerHTML = seconds;
 }
 
 function setMinute(now) {
     const minute = now.getMinutes();
-    const selectedMinute = minute % 60;
-    if (selectedMinute < 10) {
-        $("#minutes").innerHTML = "0" + selectedMinute;
+    if (minute < 10) {
+        $("#minutes").innerHTML = "0" + minute;
         return;
     }
-    $("#minutes").innerHTML = selectedMinute;
+    $("#minutes").innerHTML = minute;
 }
-
 
 function setHour(now) {
     const hours = now.getHours();
-    const selectedHour = hours % 12
-    if (selectedHour < 10) {
-        $("#hours").innerHTML = "0" + selectedHour;
+    if (hours < 10) {
+        $("#hours").innerHTML = "0" + hours;
         return;
     }
-    $("#hours").innerHTML = selectedHour;
+    $("#hours").innerHTML = hours;
 }
