@@ -22,7 +22,6 @@ function setTime() {
     if(Stopwatch.milliseconds >= 1000) {
         _increaseSecond();
     }
-
     _updateStopwatchDisplay();
 }
 
