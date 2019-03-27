@@ -8,7 +8,6 @@ function initProject() {
 
 function initClock() {
     timeInput = document.getElementById("clock");
-    timeSetting();
 }
 
 function timeSetting() {

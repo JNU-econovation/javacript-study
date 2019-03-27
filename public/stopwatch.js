@@ -1,20 +1,20 @@
-var stopWatchInput, startBtn, resetBtn;
+let input, startBtn, resetBtn;
 let isBtnClicked = false;
 let swHour, swMinute, swSecond = 0;
 let timer;
 
 function initStopWatch() {
-    stopWatchInput = document.getElementById("stopWatch");
+    input = document.getElementById("stopWatch");
     startBtn = document.getElementById("start");
     resetBtn = document.getElementById("reset");
-    swTimeInit();
+    stopWatchTimeInit();
 }
 
-function swTimeInit() {
+function stopWatchTimeInit() {
     const initialTime = "ST 00:00:00";
     startBtn.innerHTML = "시작";
     isBtnClicked = false;
-    stopWatchInput.value = initialTime;
+    input.value = initialTime;
     swHour, swMinute, swSecond = 0;
 }
 
@@ -43,10 +43,12 @@ function addMinute(){
 }
 
 function setTimerText() {
-    stopWatchInput.value = "ST " +
-     (swHour ? (swHour > 9 ? swHour : "0" + swHour) : "00") + ":" + 
-     (swMinute ? (swMinute > 9 ? swMinute : "0" + swMinute) : "00") + ":" + 
-     (swSecond > 9 ? swSecond : "0" + swSecond);
+    input.value = "ST " +
+     determineTime(swHour) + ":" + determineTime(swMinute) + ":" + determineTime(swSecond);
+}
+
+function determineTime(element) {
+    return element ? (element > 9 ? element : "0" + element) : "00"
 }
 
 function setTimer() {
@@ -65,6 +67,7 @@ function stopTime() {
     clearInterval(timer);
 }
 
-function resetisBtnClicked() {
-    swTimeInit();
+function resetBtnClicked() {
+    stopTime();
+    stopWatchTimeInit();
 }
