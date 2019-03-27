@@ -18,6 +18,7 @@ function setTime() {
     if(Stopwatch.seconds >= 60) {
         _increaseMinute();
     }
+    
     if(Stopwatch.milliseconds >= 1000) {
         _increaseSecond();
     }
