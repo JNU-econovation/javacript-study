@@ -1,21 +1,21 @@
 let input, startBtn, resetBtn;
 let isBtnClicked = false;
-let swHour, swMinute, swSecond = 0;
+let hour, minute, second = 0;
 let timer;
 
 function initStopWatch() {
     input = document.getElementById("stopWatch");
     startBtn = document.getElementById("start");
     resetBtn = document.getElementById("reset");
-    stopWatchTimeInit();
+    initStopWatch();
 }
 
-function stopWatchTimeInit() {
+function initStopWatch() {
     const initialTime = "ST 00:00:00";
     startBtn.innerHTML = "시작";
     isBtnClicked = false;
     input.value = initialTime;
-    swHour, swMinute, swSecond = 0;
+    hour, minute, second = 0;
 }
 
 function startBtnClicked() {
@@ -26,25 +26,25 @@ function startBtnClicked() {
 }
 
 function add() {
-    swSecond++;
-    if (swSecond >= 60) {
-        swSecond = 0;
-        swMinute++;
+    second++;
+    if (second >= 60) {
+        second = 0;
+        minute++;
         addMinute();
     }
     setTimerText();
 }
 
 function addMinute(){
-    if (swMinute >= 60) {
-        swMinute = 0;
-        swHour++;
+    if (minute >= 60) {
+        minute = 0;
+        hour++;
     }
 }
 
 function setTimerText() {
     input.value = "ST " +
-     determineTime(swHour) + ":" + determineTime(swMinute) + ":" + determineTime(swSecond);
+     determineTime(hour) + ":" + determineTime(minute) + ":" + determineTime(second);
 }
 
 function determineTime(element) {
@@ -69,5 +69,5 @@ function stopTime() {
 
 function resetBtnClicked() {
     stopTime();
-    stopWatchTimeInit();
+    initStopWatch();
 }

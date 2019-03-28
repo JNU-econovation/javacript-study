@@ -1,5 +1,5 @@
 let timeInput;
-const half_of_day = 12;
+const HALF_OF_DAY = 12;
 
 function initProject() {
     initClock();
@@ -20,7 +20,7 @@ function timeSetting() {
     var second = setSecond(rawSecond);
     var amOrPm = defineAmPm(rawHour);
     alarm(minute, second);
-    setClock(amOrPm, hour, minute, second);
+    setClockDisplay(amOrPm, hour, minute, second);
 }
 
 function alarm(minute, second) {
@@ -41,7 +41,7 @@ function setHour(hour){
     return hour > half_of_day ? hour - half_of_day : hour;
 }
 
-function setClock(amOrPm, hour, minute, second){
+function setClockDisplay(amOrPm, hour, minute, second){
     const time = amOrPm + " " + hour + ":" + minute + ":" + second;
     timeInput.value = time;
 }
