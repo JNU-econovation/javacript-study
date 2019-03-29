@@ -1,4 +1,4 @@
-let input, startBtn, resetBtn;
+var input, startBtn, resetBtn;
 let isBtnClicked = false;
 let hour, minute, second = 0;
 let timer;
@@ -7,15 +7,15 @@ function initStopWatch() {
     input = document.getElementById("stopWatch");
     startBtn = document.getElementById("start");
     resetBtn = document.getElementById("reset");
-    initStopWatch();
+    init();
 }
 
-function initStopWatch() {
+function init() {
     const initialTime = "ST 00:00:00";
-    startBtn.innerHTML = "시작";
     isBtnClicked = false;
     input.value = initialTime;
     hour, minute, second = 0;
+    startBtn.innerHTML = "시작";
 }
 
 function startBtnClicked() {
