@@ -21,28 +21,25 @@ function setAMPM(now) {
 }
 
 function setSecond(now) {
-    const seconds = now.getSeconds();
+    let seconds = now.getSeconds();
     if (seconds < 10) {
-        $("#seconds").innerHTML = "0" + seconds;
-        return;
+        sconds = "0" + seconds;
     }
     $("#seconds").innerHTML = seconds;
 }
 
 function setMinute(now) {
-    const minute = now.getMinutes();
+    let minute = now.getMinutes();
     if (minute < 10) {
-        $("#minutes").innerHTML = "0" + minute;
-        return;
+        minute = "0" + minute;
     }
     $("#minutes").innerHTML = minute;
 }
 
 function setHour(now) {
-    const hours = now.getHours();
+    let hours = now.getHours();
     if (hours < 10) {
-        $("#hours").innerHTML = "0" + hours;
-        return;
+        hours = "0" + hours;
     }
     $("#hours").innerHTML = hours;
 }
