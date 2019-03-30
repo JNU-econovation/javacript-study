@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>clock</title>
+</head>
+<script src="clock.js"></script>
+<script src="stopwatch.js"></script>
+<body onload= initProject()>
+    <div>
+        <p>디지털 시계</p>
+        <input type="text" id="clock" readonly="readonly">
+    <div>
+        <p>스톱워치</p>
+        <input type="text" id="stopWatch" readonly="readonly">
+        <button id = "start" onclick="startBtnClicked()">시작</button> <button id ="reset" onclick="resetBtnClicked()">리셋</button>
+    </div>
+</body>
+
+</html>
