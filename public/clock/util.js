@@ -11,14 +11,15 @@ function change() {
         setClickedEvent();
         return;
     }
-    $("#changingState").innerHTML = "stopwatch";
+    $("#changingState").innerHTML = Mode.stopwatch;
     removeTag();
 }
 
 function clear() {
-    $("#hours").innerHTML = "00";
-    $("#minutes").innerHTML = "00";
-    $("#seconds").innerHTML = "00";
+    const zero = "00";
+    $("#hours").innerHTML = zero;
+    $("#minutes").innerHTML = zero;
+    $("#seconds").innerHTML = zero;
 }
 
 function addTag() {
