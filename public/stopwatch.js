@@ -20,7 +20,8 @@ function init() {
 
 function startBtnClicked() {
     if(isBtnClicked) {
-        stopTime(); return;
+        stopTime();
+        return;
     }
     startTime();
 }
@@ -43,8 +44,7 @@ function addMinute(){
 }
 
 function setTimerText() {
-    input.value = "ST " +
-     determineTime(hour) + ":" + determineTime(minute) + ":" + determineTime(second);
+    input.value = "ST " + determineTime(hour) + ":" + determineTime(minute) + ":" + determineTime(second);
 }
 
 function determineTime(element) {
