@@ -1,10 +1,10 @@
 function init() {
     $("#changingState").addEventListener("click", change)
-    setInterval(view, 1000)
+    setInterval(showClock, 1000)
 }
 
 function showClock() {
-    if ($("#changingState").innerHTML == "stopwatch") {
+    if ($("#changingState").innerHTML == Mode.stopwatch) {
         const now = new Date();
         setAMPM(now);
         setSecond(now);
@@ -15,11 +15,9 @@ function showClock() {
 
 function setAMPM(now) {
     const hours = now.getHours();
-    if (hours < 12) {
-        $("#ampm").innerHTML = "AM";
-        return;
-    }
-    $("#ampm").innerHTML = "PM";
+    var meridiem;
+    hours < 12 ? meridiem = "AM" : meridiem = "PM"
+    $("#ampm").innerHTML = meridiem
 }
 
 function setSecond(now) {

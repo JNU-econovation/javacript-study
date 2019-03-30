@@ -3,12 +3,12 @@ function $(selector) {
 }
 
 function change() {
-    if ($("#changingState").innerHTML == "stopwatch") {
-        $("#changingState").innerHTML = "clock";
+    if ($("#changingState").innerHTML == Mode.stopwatch) {
+        $("#changingState").innerHTML = Mode.clock;
         $("#ampm").innerHTML = "ST";
         clear();
         addTag();
-        setEvent();
+        setClickedEvent();
         return;
     }
     $("#changingState").innerHTML = "stopwatch";
@@ -32,7 +32,7 @@ function removeTag() {
     $("#reset").remove();
 }
 
-function setEvent() {
+function setClickedEvent() {
     $("#startStop").addEventListener("click", start);
     $("#reset").addEventListener("click", reset);
 }
