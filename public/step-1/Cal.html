@@ -6,16 +6,43 @@
   <script type="text/javascript" src="Calculator.js"></script>
   <script type="text/javascript" src="Button.js"></script>
   <script type="text/javascript" src="Util.js"></script>
+  <script type="text/javascript" src="Check.js"></script>
   <title></title>
 </head>
 
 <body>
 
-  [input] <input type="text" id="input">
-  <input type="button" name="calculateBtn" value="=" onclick="calculateBtn()">
-  <input type="button" name="clearBtn" value="clear" onclick="clearBtn()"><br>
+<input style="text-align:right" type="text" id="input">
 
-  [output] <strong id="result"></strong>
+  <table>
+    <tr>
+      <td><input type="button" value="7" onclick="inputNumber(7)"></td>
+      <td><input type="button" value="8" onclick="inputNumber(8)"></td>
+      <td><input type="button" value="9" onclick="inputNumber(9)"></td>
+      <td><input type="button" value="+" onclick="inputOperator('+')"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="4" onclick="inputNumber(4)"></td>
+      <td><input type="button" value="5" onclick="inputNumber(5)"></td>
+      <td><input type="button" value="6" onclick="inputNumber(6)"></td>
+      <td><input type="button" value="-" onclick="inputOperator('-')"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="1" onclick="inputNumber(1)"></td>
+      <td><input type="button" value="2" onclick="inputNumber(2)"></td>
+      <td><input type="button" value="3" onclick="inputNumber(3)"></td>
+      <td><input type="button" value="*" onclick="inputOperator('*')"></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="0" onclick="inputNumber(0)"></td>
+      <td><input type="button" value="C" onclick="clearBtn()"></td>
+      <td><input type="button" value="=" onclick="calculateBtn()"></td>
+      <td><input type="button" value="/" onclick="inputOperator('/')"></td>
+    </tr>
+
+  </table>
+
+  [output] : <strong id="result"></strong>
 
   <script type="text/javascript">
     window.addEventListener('keydown', function(e) {

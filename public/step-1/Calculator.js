@@ -34,7 +34,7 @@ function multiply(num_1, num_2){
   return num_1 * num_2;
 }
 function divide(num_1, num_2){
-  if(num_1/num_2 == NaN){
+  if(num_1/num_2 === NaN){
     clearBtn()
     alert('0나누기 경고');
     return;
