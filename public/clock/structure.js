@@ -4,11 +4,17 @@ const Mode = {
 }
 
 const StopWatchStatus = {
-    stoping: "stop",
+    stopping: "stop",
     starting: "start"
 }
 
-const UsableStatus = {
+const EnableStatus = {
     disabled: "disabled",
     enabled: ""
+}
+
+const TypeOfInitial ={
+    AM : "AM",
+    PM : "PM",
+    ST : "ST"
 }

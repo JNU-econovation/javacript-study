@@ -15,9 +15,7 @@ function showClock() {
 
 function setAMPM(now) {
     const hours = now.getHours();
-    var meridiem;
-    hours < 12 ? meridiem = "AM" : meridiem = "PM"
-    $("#ampm").innerHTML = meridiem
+    $("#ampm").innerHTML = hours < 12 ? TypeOfInitial.AM : TypeOfInitial.PM
 }
 
 function setSecond(now) {
