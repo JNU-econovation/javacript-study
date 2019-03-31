@@ -15,20 +15,22 @@ function clear() {
     document.getElementById('result').value = "";
 };
 
-function type(char) {
-    let input = getInput;
-    input.value = input.value + char;
+function typing(Num) {
+    let input = getInput();
+    input.value = input.value + Num;
+
+    return input;
 }; 
 
 function getInput(){
     document.getElementById('input');
 }
 
-function typeDot(char){
+function typingDot(){
     if(isTyped) {
         return;
     }
-    input.value = input.value + char;
+    input.value = input.value;
 };
 
 function selectSymbol(symbol){
