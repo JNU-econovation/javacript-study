@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="Calculator.js"></script>
+  <script type="text/javascript" src="Button.js"></script>
+  <script type="text/javascript" src="Util.js"></script>
+  <title></title>
+</head>
+
+<body>
+
+  [input] <input type="text" id="input">
+  <input type="button" name="calculateBtn" value="=" onclick="calculateBtn()">
+  <input type="button" name="clearBtn" value="clear" onclick="clearBtn()"><br>
+
+  [output] <strong id="result"></strong>
+
+  <script type="text/javascript">
+    window.addEventListener('keydown', function(e) {
+      if (e.which === 13) {
+        console.log("hihi");
+        calculateBtn();
+      }
+    });
+  </script>
+</body>
+
+</html>
