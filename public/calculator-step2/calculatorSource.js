@@ -1,29 +1,38 @@
 var isTyped = false;
+var queue = [];
+var queueSize = 3;
 
 function keyDownEvent(){
     window.addEventListener('keydown', writeNum);
-};
+}
 
 function writeNum(e) {
     const key = document.querySelector(`[data-key="${e.keyCode}"]`);
     if(!key) return;
-    key.type(char);
-};
+    key.typing(char);
+}
 
 function clear() {
     getInput.value = "";
     document.getElementById('result').value = "";
-};
+}
 
 function typing(Num) {
     let input = getInput();
     input.value = input.value + Num;
+    queue.push(getInput().value);
+    if(queue.length == queueSize) {
+        startCal();
+    } else
+    queue.push(Num);
 
     return input;
-}; 
+}
 
 function getInput(){
     document.getElementById('input');
+
+    return input;
 }
 
 function typingDot(){
@@ -31,7 +40,7 @@ function typingDot(){
         return;
     }
     input.value = input.value;
-};
+}
 
 function selectSymbol(symbol){
     var calculation = {
@@ -44,11 +53,10 @@ function selectSymbol(symbol){
 }
 
 function startCal(){
-    let input = getInput;
-    let numbersRegExp = split.input(/[\*\/\+\-]/);
-    let inputsymbolRegExp = /[+*/-]/g;
-    let symbol = input.match(inputsymbolRegExp);
-    let result = selectSymbol(symbol)(parseFloat(numbersRegExp[0]),parseFloat(numbersRegExp[1]));
+    let leftNum = queue.pop();
+    let symbol = queue.pop();
+    let rightNum = queue.pop();
+    let result = selectSymbol(symbol)(leftNum, rightNum);
 
     return result;
 }
