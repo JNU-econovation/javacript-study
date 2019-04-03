@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const array = function(){
+const run = function(){
     let file = fs.readFileSync('info.json', 'utf8');
     let parsed = JSON.parse(file);
       
@@ -9,4 +9,4 @@ const array = function(){
     }
 }
 
-array();
+run();
