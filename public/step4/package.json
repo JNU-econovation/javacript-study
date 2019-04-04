@@ -1,0 +1,24 @@
+{
+  "name": "step4",
+  "version": "1.0.0",
+  "description": "javascript-study-step4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Parkhyunseo/javascript-study.git"
+  },
+  "author": "Parkhyunseo <gustj960217@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Parkhyunseo/javascript-study/issues"
+  },
+  "homepage": "https://github.com/Parkhyunseo/javascript-study#readme",
+  "dependencies": {
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  }
+}
