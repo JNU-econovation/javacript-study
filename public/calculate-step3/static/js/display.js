@@ -26,7 +26,6 @@ const Display = {
         this.timeField.innerHTML = clockFormatTimeValue.hours + ":" + 
                                 clockFormatTimeValue.minutes + ":" + 
                                 clockFormatTimeValue.seconds;
-    
     },
     addZeroPaddingForClockFormat : function(meridian, hours, minutes, seconds) {
         hours = this.addZeros(hours, 2);
@@ -36,12 +35,9 @@ const Display = {
         return new TimeValue(meridian, hours, minutes, seconds);
     },
     addZeros : (num, digit) => {
-        let zero = "";
-        
         num = num.toString();
         if(num.length < digit)
-            zero += "0";
-        
+            num = "0" + num;
         return zero + num;
     },
     ring : () => {
@@ -59,9 +55,7 @@ const Display = {
             this.stopwatchStartButton.value = "시작";
             Stopwatch.currentState = StopwatchState.work;
             Stopwatch.start();
-            return;
         }
-            
     },
     displayClock : function() {
       Stopwatch.stop();
