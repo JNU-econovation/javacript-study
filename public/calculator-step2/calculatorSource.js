@@ -17,21 +17,20 @@ function clear() {
     document.getElementById('result').value = "";
 }
 
-function typing(Num) {
+function typing(num) {
     let input = getInput();
-    input.value = input.value + Num;
+    input.value = input.value + num;
     queue.push(getInput().value);
     if(queue.length == queueSize) {
         startCal();
     } else
-    queue.push(Num);
+    queue.push(num);
 
     return input;
 }
 
 function getInput(){
     document.getElementById('input');
-
     return input;
 }
 
