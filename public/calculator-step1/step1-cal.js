@@ -29,7 +29,7 @@ function reset(){
   document.getElementById("result").value = "";
 }
 function error(){
-  alert("에러입니다.");
+  alert("에러입니다....!");
 }
 function check(inputValue, leftnum, rightnum){
     if((/[%*/+-]/.exec(inputValue.value))!=null || leftnum ==""|| rightnum ==""){
