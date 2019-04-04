@@ -1,8 +1,9 @@
 const readline = require('readline');
 const fs = require('fs');
+const fileName = 'data.txt';
 
 let rl = readline.createInterface({
-    input: fs.createReadStream('data.txt')
+    input: fs.createReadStream(fileName)
 });
     
 rl.on('line', function(line){
