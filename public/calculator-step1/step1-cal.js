@@ -1,5 +1,5 @@
 function handle() {
-  const isClicked = true;
+  let isClicked = true;
   const numRex = /['0-9']/;
   const operatorRex = /[%*/+-]/;
   window.addEventListener('keydown', function(event){
@@ -13,10 +13,10 @@ function handle() {
       }
       document.getElementById("blank").value += event.key;
     }
-    if(element.keyCode == 8){
+    if(event.key == 'Backspace'){
       reset();
     }
-    if(element.keyCode == 13){
+    if(event.key == 'Enter'){
       calculate();
     }
   });
@@ -27,28 +27,26 @@ function insert(inputValue){
 function reset(){
   document.getElementById("blank").value = "";
   document.getElementById("result").value = "";
-  console.log("clear");
 }
 function error(){
   alert("에러입니다.");
 }
 function check(inputValue, leftnum, rightnum){
-    var checkSign = true;
-    if((/[%*/+-]/.exec(inputValue.value))!=null || (leftnum ==""|| rightnum =="") || isNaN(leftnum)){
+    if((/[%*/+-]/.exec(inputValue.value))!=null || leftnum ==""|| rightnum ==""){
         checkSign = false;
     }
     return checkSign;
 }
 function operator(inputValue){
-  var blankMath = /[%*/+-]/g;
-  var blankArea = /\d+/g;
+  const blankMath = /[%*/+-]/g;
+  const blankArea = /\d+/g;
   var leftnum = parseFloat(inputValue.match(blankArea)[0]);
   var rightnum = parseFloat(inputValue.match(blankArea)[1]);
   var sign = inputValue.match(blankMath);
   var result = selectOperator(sign)(leftnum,rightnum);
 }
 function selectOperator(sign){
-  var result = {
+  var SignOperator = {
     '+' : function add(leftnum,rightnum){ return leftnum+rightnum; },
     '-' : function substruct(leftnum,rightnum){ return leftnum-rightnum; },
     '*' : function multifly(leftnum,rightnum){ return leftnum*rightnum; },
@@ -61,7 +59,4 @@ function calculate(){
   var inputValue = document.getElementById("blank").value;
   var resultLine = operator(inputValue);
   var resultValue = selectOperator(resultLine.leftnum, resultLine.rightnum, resultLine.sign);
-
-  document.getElementById("result").value = resultValue;
-  return resultValue;
 }
