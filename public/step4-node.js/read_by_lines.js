@@ -1,7 +1,9 @@
-let fs = require('fs');
-let readStream = fs.createReadStream('./output.txt', {flags: 'r'});
-let readline = require("readline");
-let reader = readline.createInterface(readStream, process.stdout);
+const fileName = "./output.txt"
+
+const fs = require('fs');
+const readStream = fs.createReadStream(fileName, {flags: 'r'});
+const readline = require("readline");
+const reader = readline.createInterface(readStream, process.stdout);
 
 reader.on('line', function(line) {
     var userInfo = line.split(" ");

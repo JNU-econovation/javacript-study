@@ -1,6 +1,4 @@
-let net = require('net');
-
-let client = net.connect({port:port, host: 'localhost'}, function() {
+const client = net.connect({port:port, host: 'localhost'}, function() {
     console.log('connected to server.');
     client.write("Hello! \r\n");
 });

@@ -1,7 +1,7 @@
 const port = 8838;
 
-let net = require('net');
-let server = net.createServer(function (client) {
+const net = require('net');
+const server = net.createServer(function (client) {
     console.log('client is connected to server');
 
     client.on('data', function(data) {
