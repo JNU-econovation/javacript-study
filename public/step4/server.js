@@ -7,7 +7,7 @@ server.on('connection', (socket) => {
 
     console.log('semd message : ' + message['content']);
     
-    socket.emit('message', message['content']);
+    socket.emit('message', message);
     socket.on('message', (data) => {
         console.log('receive message : ' + data);
     });
