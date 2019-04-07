@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./static/css/style.css" type="text/css" />
+        <script type="text/javascript" src="./static/js/main.js"></script>
+        <script type="text/javascript" src="./static/js/timeValue.js"></script>
+        <script type="text/javascript" src="./static/js/clock.js"></script>
+        <script type="text/javascript" src="./static/js/display.js"></script>
+        <script type="text/javascript" src="./static/js/stopwatch.js"></script>
+    </head>
+    <body onload="awake()">
+        <main>
+            <div class="clolck">
+                <div id="meridian"></div>
+                <div id="time"></div>
+                <button id="toggle-function" onClick="clickToggleFunctionButton()">스탑워치</button>
+                <button id="stopwatch-start" onClick="clickStopwatchStartButton()">시작</button>
+                <button id="stopwatch-stop" onClick="clickStopwatchStopButton()">멈춤</button>
+            </div>
+        </main>
+    </body>
+    
+</html>

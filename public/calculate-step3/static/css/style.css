@@ -1,0 +1,11 @@
+.clock {
+    font-size: larger;
+}
+
+.meridian {
+    display: inline-block;
+}
+
+.time {
+    display: inline-block;
+}
