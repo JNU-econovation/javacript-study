@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>계산기!</title>
+    <link rel="stylesheet" href="step1-cal.css">
+    <script src="step1-cal.js"></script>
+</head>
+<body onload=inputKey()>
+    <table>
+        <tr>
+            <td colspan="4">
+                <input type="text" id="blank">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="text" id="result">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" onclick=reset()>AC</td>
+            <td>/</td>
+        </tr>
+        <tr>
+            <td onclick=insert(this)>7</td>
+            <td onclick=insert(this)>8</td>
+            <td onclick=insert(this)>9</td>
+            <td onclick=insert(this)>*</td>
+        </tr>
+        <tr>
+            <td onclick=insert(this)>4</td>
+            <td onclick=insert(this)>5</td>
+            <td onclick=insert(this)>6</td>
+            <td onclick=insert(this)>-</td>
+        </tr>
+        <tr>
+            <td onclick=insert(this)>1</td>
+            <td onclick=insert(this)>2</td>
+            <td onclick=insert(this)>3</td>
+            <td onclick=insert(this)>+</td>
+        </tr>
+        <tr>
+            <td colspan="3">0</td>
+            <td onclick=calculate()>=</td>
+        </tr>
+    </table>
+</body>
+</html>

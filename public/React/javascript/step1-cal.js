@@ -21,16 +21,20 @@ function inputKey() {
     }
   });
 }
-function insert(value){
-  document.getElementById("blank").value += value;
+
+function insert(element){
+  document.getElementById("blank").value += element.innerHTML;
 }
+
 function reset(){
   document.getElementById("blank").value = "";
   document.getElementById("result").value = "";
 }
+
 function error(){
   alert("에러입니다.");
 }
+
 function check(inputValue){
     var leftnum, sign, rightnum = getValues(inputValue);
     
@@ -67,6 +71,7 @@ function selectOperator(sign){
   }
   return SignOperator[sign]();
 }
+
 function calculate(){
   var inputValue = document.getElementById("blank").value;
   if(check(inputValue) == false)
