@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="/process/photo" enctype="multipart/form-data">
+        <h1>나의 메모</h1>
+        <div>작 성 자 <input type="text" name ="writer"> </div> 
+        <div>작성일시 <input type="date" name="date"> </div> 
+        <div>내용 <input type="text" name="content"></div>
+        <div>사진 <img id="thumbnail" src="" width="100" alt="썸네일영역">
+             <input type="file" value="사진 선택" id="getfile" name="getfile" accept="image/*" onchange="fileChanged()">
+        </div>
+        <input type="submit" value="저장">
+        <input type="reset" value="닫기">
+    </form>
+    
+</body>
+<script src="/main.js"></script>
+<script src="/send.js"></script>
+</html>
