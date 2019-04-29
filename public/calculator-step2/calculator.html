@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="calculatorSource.js"></script>
+    <title>myCalculator</title>
+    <link rel="stylesheet" href="style.css" >
+</head>
+<body>
+    <div class="key"></div>
+    <table border="1">
+        <caption>myCalculator</caption>
+        <tr>
+           <td colspan="4">
+                <input type="text" id="input" style="text-align:right;">
+            </td>   
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="text" id="result" style="text-align:right;" readonly="readonly">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="key" onclick="clear()">AC</td>
+            <td data-key="47" class="key" onclick="typing('/')">/</td>
+        </tr>        
+        <tr>
+            <td data-key="55" class="key" onclick="typing(7)">7</td>
+            <td data-key="56" class="key" onclick="typing(8)">8</td>
+            <td data-key="57" class="key" onclick="typing(9)">9</td>
+            <td data-key="42" class="key" onclick="typing('*')">*</td>
+        </tr>
+         <tr>
+            <td data-key="52" class="key" onclick="typing(4)">4</td>
+            <td data-key="53" class="key" onclick="typing(5)">5</td>
+            <td data-key="54" class="key" onclick="typing(6)">6</td>
+            <td data-key="45" class="key" onclick="typing('-')">-</td>
+        </tr>
+         <tr>
+            <td data-key="49" class="key" onclick="typing(1)">1</td>
+            <td data-key="50" class="key" onclick="typing(2)">2</td>
+            <td data-key="51" class="key" onclick="typing(3)">3</td>
+            <td data-key="43" class="key" onclick="typing('+')">+</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="key" onclick="typing(0)">0</td>
+            <td data-key="46" class="key" onclick="typingDot('.')">.</td>
+            <td class="key" onclick="startCal()">=</td>
+        </tr>
+    </table>    
+</body>
+</html>
