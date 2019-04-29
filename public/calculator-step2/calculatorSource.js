@@ -9,11 +9,11 @@ function keyDownEvent(){
 function writeNum(e) {
     const key = document.querySelector(`[data-key="${e.keyCode}"]`);
     if(!key) return;
-    key.typing(char);
+    key.typing(e);
 }
 
 function clear() {
-    getInput.value = "";
+    document.getElementById('input').value = "";
     document.getElementById('result').value = "";
 }
 
@@ -23,8 +23,7 @@ function typing(num) {
     queue.push(getInput().value);
     if(queue.length == queueSize) {
         startCal();
-    } else
-    queue.push(num);
+    } queue.push(num);
 
     return input;
 }
