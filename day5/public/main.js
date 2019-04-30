@@ -1,4 +1,3 @@
-
 function updateFile() {
     const getFile = document.querySelector('#getfile');
     const fileList = getFile.files;

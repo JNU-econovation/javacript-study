@@ -20,12 +20,10 @@ upload = multer({ storage: storage }).single('getfile');
 
 app.get('/', function(req, res){res.render('main');});
 
-
 app.post('/photo', upload, function (req, res, next) {
     const fileName = req.file.filename;
     res.render('result', { title: 'Express', fileName : fileName});
     console.log('post-photo request');
 });
-
 
 app.listen(5500, function(){console.log("server started");});
