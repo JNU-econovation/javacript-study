@@ -1,23 +1,20 @@
 const models = require('../../models');
-const SequelizeUniqueConstraintError = 'SequelizeUniqueConstraintError';
 
 const create = (req, res) => {
-    const text = req.body.text;
-    const checked = 0;
-    
-    if(!text)
-        return res.status(400).end();
+    const name = req.body.text;
+    const title = req.body.text;
+    const content = req.body.text;
+    const imagePath = `${req.file.filename}`;
         
-    models.Todo.create({text, checked})
-        .then(todo => {
-            console.log(text);
-            res.status(201).json(todo);
+    models.Memo.create({name, title, content, imagePath})
+        .then(memo => {
+            res.status(201).redner('pages/result.html');
         }) 
         .catch(err => {
-           if(err.name === SequelizeUniqueConstraintError) {
-               return res.status(409).end();
-           }
-           res.status(500).end();
+            if(err.name === 'SequelizeUniqueConstraintError') {
+                return res.status(409).end();
+            }
+            res.status(500).end();
         });
 }
 

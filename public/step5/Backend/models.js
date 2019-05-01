@@ -15,11 +15,15 @@ const Memo = sequelize.define('memo', {
     content: {
         type:Sequelize.STRING,
     },
-    image: {
+    imagePath: {
         type:Sequelize.STRING,
     },
 });
 
-module.exports = { Sequelize, sequelize, Memo };
+module.exports = { 
+    Sequelize, 
+    sequelize,
+    Memo, 
+};
 
 

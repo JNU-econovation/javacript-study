@@ -8,4 +8,3 @@ syncDB().then(_ => {
        console.log('Server is running on 8080 port');
     });
 })
-

@@ -22,6 +22,7 @@
   "homepage": "https://github.com/Parkhyunseo/javascript-study#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "multer": "^1.4.1",
     "sequelize": "^5.2.12",
     "sqlite3": "^4.0.6"
   }
