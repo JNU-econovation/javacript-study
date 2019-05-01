@@ -9,36 +9,39 @@
 
 <body>
     <article>
-        <table class="header-table">
-            <thead>
-                <th colspan="2" class="table-head">memo</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><label>작성자</label></td>
-                    <td><input type="text" id="name"></td>
-                </tr>
-                <tr>
-                    <td><label>작성일시</label></td>
-                    <td><input type="datetime-local" id="date"></td>
-                </tr>
-                <tr>
-                    <td class="content"><label>내용</label></td>
-                    <td class="content"><textarea></textarea></td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="table-drain"></td>
-                </tr>
-            </tbody>
-        </table>
+        <form method="GET" action="save" id="save-form">
+            <table class="header-table">
+                <thead>
+                    <th colspan="2" class="table-head">memo</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><label>작성자</label></td>
+                        <td><input type="text" id="name"></td>
+                    </tr>
+                    <tr>
+                        <td><label>작성일시</label></td>
+                        <td><input type="datetime-local" id="date"></td>
+                    </tr>
+                    <tr>
+                        <td class="content"><label>내용</label></td>
+                        <td class="content"><textarea></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="table-drain"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
         <table class="footer-table">
             <tbody>
                 <tr>
-                    <td id="save-layor"><button id="save-button">저장</button></td>
+                    <td id="save-layor"><button id="save-button" form="save-form" type="submit">저장</button></td>
                     <td id="delete-layor"><button id="delete-button">삭제</button></td>
                 </tr>
             </tbody>
         </table>
+
     </article>
 </body>
 
