@@ -38,6 +38,10 @@ textarea {
     border-bottom: 2px solid;
 }
 
+.table-body{
+    height: 219px;
+}
+
 .table-drain{
     border-bottom: 2px solid;
 }
@@ -53,6 +57,10 @@ textarea {
     padding-left: 40px;
     width: 50%;
     text-align: left
+}
+
+#re-layor{
+    text-align: center;
 }
 
 button {
