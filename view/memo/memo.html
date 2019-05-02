@@ -8,8 +8,21 @@
 </head>
 
 <body>
+    <script>
+        function loadImage(value) {
+            if (value.files && value.files[0]) {
+                var reader = new FileReader();
+                reader.onload = loadEvent;
+                reader.readAsDataURL(value.files[0]);
+            }
+        }
+
+        function loadEvent(e) {
+            document.querySelector("img.upload-thumb").setAttribute('src', e.target.result);
+        }
+    </script>
     <article>
-        <form method="POST" action="/save" id="save-form">
+        <form method="POST" action="/save" id="save-form" enctype="multipart/form-data">
             <table class="header-table">
                 <thead>
                     <th colspan="2" class="table-head">memo</th>
@@ -26,6 +39,16 @@
                     <tr>
                         <td class="content"><label>내용</label></td>
                         <td class="content"><textarea name="content" id="date"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="file" name="userfile" onchange="loadImage(this)" enctype="multipart/form-data"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="upload-display">
+                            <div class="upload-thumb-wrap">
+                                <img class="upload-thumb">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="table-drain"></td>

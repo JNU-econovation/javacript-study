@@ -19,6 +19,7 @@
   "homepage": "https://github.com/GiPyoo/javascript-study#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "multer": "^1.4.1",
     "supervisor": "^0.12.0"
   }
 }
