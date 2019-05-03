@@ -36,7 +36,7 @@ function error(){
 }
 
 function check(inputValue){
-    var leftnum, sign, rightnum = getValues(inputValue);
+    const leftnum, sign, rightnum = getValues(inputValue);
     
     checkSign = true;
     if(sign == "" || leftnum ==""|| rightnum ==""){
@@ -57,19 +57,19 @@ function getValues(inputValue)
 }
 
 function operator(inputValue){
-  var leftnum, sign, rightnum = getValues(inputValue);
+  const leftnum, sign, rightnum = getValues(inputValue);
   return selectOperator(sign)(leftnum,rightnum);
 }
 
 function selectOperator(sign){
-  var SignOperator = {
+  var signOperator = {
     '+' : function add(leftnum,rightnum){ return leftnum+rightnum; },
     '-' : function substruct(leftnum,rightnum){ return leftnum-rightnum; },
     '*' : function multifly(leftnum,rightnum){ return leftnum*rightnum; },
     '/' : function divide(leftnum,rightnum){ return leftnum/rightnum; },
     '%' : function surplus(leftnum,rightnum){ return leftnum%rightnum; }
   }
-  return SignOperator[sign]();
+  return signOperator[sign]();
 }
 
 function calculate(){
