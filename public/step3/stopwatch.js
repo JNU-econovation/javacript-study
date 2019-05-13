@@ -21,7 +21,6 @@ function start() {
     let second = setSeconds(stSecond);
   
     printTimer(hour, minute, second);
-
 }
 
 function addTime(){

@@ -1,4 +1,4 @@
-var timeinput = document.getElementById(clock);
+var timeprint = document.getElementById(clock);
 
 function OperateClock(){
     currnetTime = new Date();
@@ -6,26 +6,26 @@ function OperateClock(){
     const minute = currentTime.getMinutes();
     const second = currentTime.getSeconds();
 
-    let nowhour = clockHour(hour);
-    let nowminute = clockMinutes(minute);
-    let nowsecond = clockSeconds(second);
+    let nowhour = isHour(hour);
+    let nowminute = isMinute(minute);
+    let nowsecond = isSecond(second);
     let AmPm = chooseAmPm(hour);
 
     alarm(nowhour, nowminute, nowsecond);
     printTime(AmPm, nowhour, nowminute, nowsecond);
 }
 
-function clockHour(nowhour){
+function isHour(nowhour){
     if(nowhour > 12 && nowhour > 9) {return nowhour-12;}
     else if(nowhour == 10 || nowhour == 11) {return nowhour;}
     return "0"+nowhour;    
 }
 
-function clockMinutes(nowminute){
+function isMinute(nowminute){
     return nowminute > 9 ? nowminute : "0" + nowminute;
 }
 
-function clockSeconds(nowsecond){
+function isSecond(nowsecond){
     return nowsecond > 9 ? nowsecond : "0" + nowsecond;
 }
 
